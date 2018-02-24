@@ -22,4 +22,4 @@ QA:	Jan Adell
 
 # Wiki 
 
-Click [HERE](https://github.com/Nilgomis/Datwei-Studio/wiki) to go to our wiki.
+Click [HERE](https://github.com/Nilgomis/Datwei-Studio-Tengai/wiki) to go to our wiki.
