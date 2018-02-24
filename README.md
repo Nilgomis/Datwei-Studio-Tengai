@@ -7,7 +7,8 @@
 
 Tengai is a classic side-scrolling shoot’em’up from back in the mid ’90s.  
 
-# Members:
+# Members:  
+
 Management:	Nil Gomis  
 
 Art/Design:	Oscar Reguera  
