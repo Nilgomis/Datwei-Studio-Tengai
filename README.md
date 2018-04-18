@@ -24,3 +24,21 @@ QA:	Jan Adell
 # Wiki 
 
 Click [HERE](https://github.com/Nilgomis/Datwei-Studio-Tengai/wiki/Tengai-by-Datwei-Studio) to go to our wiki.
+
+# Controls
+
+PLAYER 1
+W: Move Up
+S: Move Down
+A: Move Left
+D: Move Right
+SPACE: Shoot
+SHIFT: Special
+
+PLAYER 2
+Up arrow key: Move Up
+Down arrow key: Move Down
+Left arrow key: Move Left
+Right arrow key: Move Right
+Ctrl: Shoot
+0: Special
