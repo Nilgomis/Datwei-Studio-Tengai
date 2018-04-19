@@ -27,7 +27,7 @@ bool ModuleInput::Init()
 	return ret;
 }
 
-// Called every draw update
+// Calling every draw update
 update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
