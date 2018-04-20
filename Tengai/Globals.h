@@ -1,6 +1,8 @@
 #ifndef __GLOBALS_H__
 #define __GLOBALS_H__
 
+#include "SDL\include\SDL_rect.h"
+
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 void log(const char file[], int line, const char* format, ...);
 
@@ -22,7 +24,7 @@ typedef unsigned int uint;
 
 // Configuration -----------
 #define SCREEN_SIZE 3
-#define SCREEN_WIDTH 320 //384
+#define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 224
 #define WIN_FULLSCREEN 0
 #define WIN_FULLSCREEN_DESKTOP 0
