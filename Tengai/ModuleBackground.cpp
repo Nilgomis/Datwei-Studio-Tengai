@@ -23,8 +23,8 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("background.png");
-	graphics2 = App->textures->Load("background.png");
+	graphics = App->textures->Load("Sprites/UI/StartScreen/background.png");
+	graphics2 = App->textures->Load("Sprites/UI/StartScreen/background.png");
 	return ret;
 }
 

@@ -15,22 +15,22 @@ ModulePlayer::ModulePlayer()
 	position.y = 65;
 
 	// idle animation 
-	idle.PushBack({ 68, 53, 32, 29 });
-	idle.PushBack({ 108, 53, 32, 29 });
-	idle.PushBack({ 148, 53, 32, 29 });
+	idle.PushBack({ 36, 8, 30, 28 });
+	idle.PushBack({ 73, 8, 30, 28 });
+	idle.PushBack({ 110, 9, 30, 28 });
 
-	idle.speed = 0.1f;
+	idle.speed = 0.2f;
 
 
-	forward.PushBack({ 68, 53, 32, 29 });
-	forward.PushBack({ 108, 53, 32, 29 });
-	forward.PushBack({ 148, 53, 32, 29 });
+	forward.PushBack({ 36, 8, 30, 28 });
+	forward.PushBack({ 73, 8, 30, 28 });
+	forward.PushBack({ 110, 9, 30, 28 });
 
 	forward.speed = 0.1f;
 
-	backward.PushBack({ 192, 53, 29, 29 });
-	backward.PushBack({ 232, 53, 29, 29 });
-	backward.PushBack({ 272, 53, 29, 29 });
+	backward.PushBack({ 147, 8, 25, 28 });
+	//backward.PushBack({ 232, 53, 29, 29 });
+	//backward.PushBack({ 272, 53, 29, 29 });
 
 	backward.speed = 0.1f;
 
@@ -45,7 +45,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Sprites/Characters/Miko/MikoSpritesheet.png"); // arcade version
+	graphics = App->textures->Load("Sprites/Characters/Sho/Sho spritesheet.png");
 	return ret;
 }
 
@@ -66,7 +66,7 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &idle;
 
-	int speed = 3;
+	float speed = 2.5f;
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{

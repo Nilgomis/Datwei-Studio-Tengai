@@ -7,7 +7,6 @@
 #include "ModuleParticles.h"
 #include "ModuleSceneTemple.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneTemple::ModuleSceneTemple()
 {}

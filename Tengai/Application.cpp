@@ -13,18 +13,17 @@
 
 Application::Application()
 {
-	//int i = 0;
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = intro = new ModuleStartScreen();
-	modules[5] = scene_temple = new ModuleSceneTemple();
-	modules[6] = background = new ModuleBackground();
-	modules[7] = player = new ModulePlayer();
-	modules[8] = particles = new ModuleParticles();
-	modules[9] = collision = new ModuleCollision();
-	modules[10] = fade = new ModuleFadeToBlack();
+	modules[0] = window			= new ModuleWindow();
+	modules[1] = render			= new ModuleRender();
+	modules[2] = input			= new ModuleInput();
+	modules[3] = textures		= new ModuleTextures();
+	modules[4] = intro			= new ModuleStartScreen();
+	modules[5] = scene_temple	= new ModuleSceneTemple();
+	modules[6] = background		= new ModuleBackground();
+	modules[7] = player			= new ModulePlayer();
+	modules[8] = particles		= new ModuleParticles();
+	modules[9] = collision		= new ModuleCollision();
+	modules[10] = fade			= new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -38,9 +37,9 @@ bool Application::Init()
 	bool ret = true;
 
 	// disables stopped modules
-	/*scene_temple->Disable();
+	scene_temple->Disable();
 	player->Disable();
-	collision->Disable();*/
+	collision->Disable();
 	//
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
