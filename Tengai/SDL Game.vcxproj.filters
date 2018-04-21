@@ -65,6 +65,12 @@
     <ClInclude Include="ModuleSceneTemple.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -109,5 +115,19 @@
     <ClCompile Include="ModuleSceneTemple.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyPegTop.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EnemyPegTop.h">
+      <Filter>Modules</Filter>
+    </None>
   </ItemGroup>
 </Project>

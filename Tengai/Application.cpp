@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 
 Application::Application()
@@ -19,11 +20,12 @@ Application::Application()
 	modules[3] = textures		= new ModuleTextures();
 	modules[4] = intro			= new ModuleStartScreen();
 	modules[5] = scene_temple	= new ModuleSceneTemple();
-	modules[6] = background		= new ModuleBackground();
-	modules[7] = player			= new ModulePlayer();
-	modules[8] = particles		= new ModuleParticles();
-	modules[9] = collision		= new ModuleCollision();
-	modules[10] = fade			= new ModuleFadeToBlack();
+	modules[6] = enemies		= new ModuleEnemies();
+	modules[7] = background		= new ModuleBackground();
+	modules[8] = player			= new ModulePlayer();
+	modules[9] = particles		= new ModuleParticles();
+	modules[10] = collision		= new ModuleCollision();
+	modules[11] = fade			= new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -40,6 +42,7 @@ bool Application::Init()
 	scene_temple->Disable();
 	player->Disable();
 	collision->Disable();
+	enemies->Disable();
 	//
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
