@@ -26,14 +26,12 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 73, 8, 30, 28 });
 	forward.PushBack({ 110, 9, 30, 28 });
 
-	forward.speed = 0.1f;
+	forward.speed = 0.2f;
 
+	backward.PushBack({ 181, 8, 23, 28 });
 	backward.PushBack({ 147, 8, 25, 28 });
-	//backward.PushBack({ 232, 53, 29, 29 });
-	//backward.PushBack({ 272, 53, 29, 29 });
-
-	backward.speed = 0.1f;
-
+	backward.loop = false;
+	backward.speed = 0.2f;
 
 }
 

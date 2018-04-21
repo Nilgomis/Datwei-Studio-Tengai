@@ -8,15 +8,29 @@ class Animation
 {
 public:
 	bool loop = true;
+	bool retreat = false;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
 
 private:
-	float current_frame;
+	float current_frame = 0.0f;
 	int last_frame = 0;
 	int loops = 0;
+	enum retreat
+	{
+		forward,
+		backward
+	} direction = forward;
 
 public:
+
+	Animation()
+	{}
+
+	Animation(const Animation& anim) : loop(anim.loop), speed(anim.speed), last_frame(anim.last_frame)
+	{
+		SDL_memcpy(&frames, anim.frames, sizeof(frames));
+	}
 
 	void PushBack(const SDL_Rect& rect)
 	{
@@ -25,9 +39,31 @@ public:
 
 	SDL_Rect& GetCurrentFrame()
 	{
-		current_frame += speed;
-		if(current_frame >= last_frame)
-			current_frame = 0;
+		switch (direction)
+		{
+			case retreat::forward:
+			{
+				current_frame += speed;
+				if (current_frame >= last_frame)
+				{
+					current_frame = (loop || retreat) ? 0.0f : last_frame - 1;
+					direction = retreat ? retreat::backward : retreat::forward;
+					loops++;
+				}
+			}
+			break;
+			case retreat::backward:
+			{
+				current_frame -= speed;
+				if (current_frame <= 0.0f)
+				{
+					current_frame = 0.0f;
+					direction = retreat::forward;
+					loops++;
+				}
+			}
+			break;
+		}
 
 		return frames[(int)current_frame];
 	}
@@ -39,7 +75,7 @@ public:
 
 	void Reset()
 	{
-		current_frame = 0;
+		current_frame = 0.0f;
 	}
 };
 
