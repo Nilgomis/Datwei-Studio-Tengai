@@ -20,7 +20,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Game/Sprites/Characters/Miko/miko explosions.png");
+	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 
 	// Explosion particle
 	explosion.anim.PushBack({ 274, 296, 33, 30 });
@@ -33,10 +33,10 @@ bool ModuleParticles::Start()
 	explosion.anim.speed = 0.3f;
 
 	// Shooting particle
-	shoot.anim.PushBack({ 26, 136, 11, 15 });
-	shoot.anim.PushBack({ 49, 136, 11, 15 });
-	shoot.anim.PushBack({ 73, 137, 11, 15 });
-	shoot.anim.PushBack({ 97, 137, 11, 15 });
+	shoot.anim.PushBack({ 73, 151, 27, 3 });
+	shoot.anim.PushBack({ 148, 151, 32, 3 });
+	shoot.anim.PushBack({ 107, 151, 32, 4 });
+	/*shoot.anim.PushBack({ 97, 137, 11, 15 });
 	shoot.anim.PushBack({ 121, 139, 11, 15 });
 	shoot.anim.PushBack({ 144, 135, 11, 15 });
 	shoot.anim.PushBack({ 168, 135, 11, 15 });
@@ -47,9 +47,9 @@ bool ModuleParticles::Start()
 	shoot.anim.PushBack({ 288, 135, 11, 15 });
 	shoot.anim.PushBack({ 313, 135, 11, 15 });
 	shoot.anim.PushBack({ 337, 136, 11, 15 });
-	shoot.anim.PushBack({ 360, 138, 11, 15 });
+	shoot.anim.PushBack({ 360, 138, 11, 15 });*/
 
-	shoot.anim.speed = 0.2f;
+	shoot.anim.speed = 0.25f;
 	shoot.speed.x = 5;
 	shoot.life = 3000;
 
@@ -112,7 +112,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
-			p->position.y = y;
+			p->position.y = y+10;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;

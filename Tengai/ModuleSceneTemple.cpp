@@ -19,7 +19,7 @@ bool ModuleSceneTemple::Start()
 {
 	LOG("Loading Temple scene");
 
-	background = App->textures->Load("Sprites/UI/StartScreen/background.png");
+	background = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
 
 	App->player->Enable();
 	App->particles->Enable();

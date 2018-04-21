@@ -17,7 +17,7 @@ bool ModuleStartScreen::Start()
 {
 	LOG("Loading Temple intro");
 
-	background = App->textures->Load("Sprites/UI/StartScreen/background.png");
+	background = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
 
 	App->render->camera.x = App->render->camera.y = 0;
 

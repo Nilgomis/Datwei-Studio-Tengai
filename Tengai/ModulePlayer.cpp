@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Sprites/Characters/Sho/Sho spritesheet.png");
+	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 	return ret;
 }
 
