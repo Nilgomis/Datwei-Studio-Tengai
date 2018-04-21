@@ -18,6 +18,22 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
+	/*do
+	{
+		idle.PushBack({ 244, 11, 28, 25 });
+		idle.PushBack({ 281, 8, 30, 28 });
+		idle.PushBack({ 311, 10, 32, 25 });
+		idle.PushBack({ 350, 11, 30, 25 });
+		idle.PushBack({ 388, 12, 27, 24 });
+		idle.PushBack({ 421, 10, 28, 26 });
+		idle.PushBack({ 454, 12, 32, 25 });
+		idle.PushBack({ 493, 11, 31, 25 });
+		idle.PushBack({ 531, 12, 27, 24 });
+		idle.PushBack({ 565, 9, 31, 27 });
+		idle.PushBack({ 601, 8, 31, 28 });
+
+		idle.speed = 0.2f;
+	} while (position.y = 200);*/
 
 	idle.speed = 0.2f;
 
@@ -26,12 +42,32 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 73, 8, 30, 28 });
 	forward.PushBack({ 110, 9, 30, 28 });
 
+	/*do
+	{
+		forward.PushBack({ 244, 11, 28, 25 });
+		forward.PushBack({ 281, 8, 30, 28 });
+		forward.PushBack({ 311, 10, 32, 25 });
+		forward.PushBack({ 350, 11, 30, 25 });
+		forward.PushBack({ 388, 12, 27, 24 });
+		forward.PushBack({ 421, 10, 28, 26 });
+		forward.PushBack({ 454, 12, 32, 25 });
+		forward.PushBack({ 493, 11, 31, 25 });
+		forward.PushBack({ 531, 12, 27, 24 });
+		forward.PushBack({ 565, 9, 31, 27 });
+		forward.PushBack({ 601, 8, 31, 28 });
+
+		forward.speed = 0.2f;
+	} while (position.y = 200);*/
+
 	forward.speed = 0.2f;
 
 	backward.PushBack({ 181, 8, 23, 28 });
 	backward.PushBack({ 147, 8, 25, 28 });
 	backward.loop = false;
+
 	backward.speed = 0.2f;
+
+	
 
 }
 
