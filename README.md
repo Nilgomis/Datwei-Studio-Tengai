@@ -1,4 +1,4 @@
-# Tengai by Datwei Studio
+﻿# Tengai by Datwei Studio
 
 
 ![](https://lh6.ggpht.com/nyXhVkiDjRTP4B-L69HKoVosDyRDuHrsv7UadWTc0VMi-8ohmd4POXZ3KmCQ7XfcAws=h310)
@@ -33,12 +33,12 @@ S: Move Down
 A: Move Left
 D: Move Right
 SPACE: Shoot
-SHIFT: Special
+//SHIFT: Special
 
 PLAYER 2
 Up arrow key: Move Up
 Down arrow key: Move Down
 Left arrow key: Move Left
 Right arrow key: Move Right
-Ctrl: Shoot
-0: Special
+NUMPAD 0: Shoot
+//NUMPAD 0: Special

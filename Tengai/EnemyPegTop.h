@@ -2,6 +2,7 @@
 #define __ENEMYPEGTOP_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class EnemyPegTop : public Enemy
 {

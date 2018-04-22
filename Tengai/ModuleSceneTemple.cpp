@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModulePlayer2.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
@@ -31,6 +32,7 @@ bool ModuleSceneTemple::Start()
 
 	//App->background->Enable();
 	App->player->Enable();
+	App->player2->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
 
@@ -62,6 +64,7 @@ bool ModuleSceneTemple::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
+	App->player2->Disable();
 	//App->background->Disable();
 
 	return true;

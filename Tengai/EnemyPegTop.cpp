@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "EnemyPegTop.h"
 #include "ModuleCollision.h"
+#include "Globals.h"
 
 EnemyPegTop::EnemyPegTop(int x, int y) : Enemy(x, y)
 {
@@ -8,10 +9,6 @@ EnemyPegTop::EnemyPegTop(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 83, 10, 42, 48 });
 	fly.PushBack({ 128, 10, 42, 48 });
 	fly.PushBack({ 172, 10, 42, 48 });
-	/*fly.PushBack({ 137, 6, 24, 24 });
-	fly.PushBack({ 170, 6, 24, 24 });
-	fly.PushBack({ 203, 6, 24, 24 });
-	fly.PushBack({ 236, 6, 24, 24 });*/
 	fly.speed = 0.2f;
 
 	animation = &fly;

@@ -2,6 +2,7 @@
 #define __ENEMYFIREWHEEL_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class EnemyFireWheel : public Enemy
 {

@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "EnemyFireWheel.h"
 #include "ModuleCollision.h"
+#include "Globals.h"
 
 EnemyFireWheel::EnemyFireWheel(int x, int y) : Enemy(x, y)
 {

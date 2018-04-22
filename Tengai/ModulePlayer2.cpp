@@ -11,8 +11,8 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = 50;
-	position.y = 65;
+	position.x = 25;
+	position.y = 95;
 
 	// idle animation 
 	idle.PushBack({ 36, 8, 30, 28 });
@@ -96,7 +96,7 @@ update_status ModulePlayer2::Update()
 		}
 	}
 	// Shooting
-	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
+	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
 		App->particles->AddParticle(App->particles->shoot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
 	}

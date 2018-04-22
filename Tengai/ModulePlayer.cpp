@@ -11,8 +11,8 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 50;
-	position.y = 65;
+	position.x = 25;
+	position.y = 50;
 
 	// idle animation 
 	idle.PushBack({ 36, 8, 30, 28 });
