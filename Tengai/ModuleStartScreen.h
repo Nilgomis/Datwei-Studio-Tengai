@@ -4,11 +4,8 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
-#include "ModuleAudio.h"
 
 struct SDL_Texture;
-//struct _Mix_Music;
-struct Mix_Chunk;
 
 class ModuleStartScreen : public Module
 {
@@ -45,8 +42,6 @@ private:
 	SDL_Rect bg5;
 	SDL_Rect bg6;
 	SDL_Rect bg7;
-
-	//_Mix_Music* Musics = nullptr;
 
 public:
 

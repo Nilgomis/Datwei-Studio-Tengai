@@ -11,8 +11,6 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 25;
-	position.y = 50;
 
 	// idle animation 
 	idle.PushBack({ 38, 0, 29, 28 });
@@ -43,8 +41,12 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
+	position.x = 25;
+	position.y = 50;
 	bool ret = true;
+	destroyed = false;
 	player = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_Spritesheet.png");
+	col = App->collision->AddCollider({ position.x,position.y,29,28 }, COLLIDER_PLAYER, this);
 	return ret;
 }
 
@@ -71,7 +73,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.x < 290) {
+		if (position.x < 270) {
 			position.x += speed;
 		}
 	}
@@ -84,37 +86,25 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &forward;
-		if (position.y > 10) {
+		current_animation = &backward;
+		if (position.y > 20) {
 			position.y -= speed;
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.y < 190) {
-			/*forward.PushBack({ 244, 11, 28, 25 });
-			forward.PushBack({ 281, 8, 30, 28 });
-			forward.PushBack({ 311, 10, 32, 25 });
-			forward.PushBack({ 350, 11, 30, 25 });
-			forward.PushBack({ 388, 12, 27, 24 });
-			forward.PushBack({ 421, 10, 28, 26 });
-			forward.PushBack({ 454, 12, 32, 25 });
-			forward.PushBack({ 493, 11, 31, 25 });
-			forward.PushBack({ 531, 12, 27, 24 });
-			forward.PushBack({ 565, 9, 31, 27 });
-			forward.PushBack({ 601, 8, 31, 28 });
-
-			forward.speed = 0.2f;*/
+		if (position.y < 192) {
 			position.y += speed;
 		}
 	}
+	col->SetPos(position.x, position.y);
 
 	// Shooting
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->shoshot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shoshot, position.x + 20, position.y+10, COLLIDER_PLAYER_SHOT);
 	}
 
 	// Draw everything

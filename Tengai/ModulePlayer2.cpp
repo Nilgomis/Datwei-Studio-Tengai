@@ -1,21 +1,16 @@
 #include "Globals.h"
 #include "Application.h"
-#include "Module.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
-#include "ModulePlayer.h"
-#include "ModulePLayer2.h"
-#include "ModuleSceneTemple.h"
+#include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
-#include "SDL_mixer/include/SDL_mixer.h"
+#include "ModulePlayer2.h"
 
 
 ModulePlayer2::ModulePlayer2()
 {
-	position.x = 25;
-	position.y = 95;
 
 	// idle animation									// JUNIS ANIMATION
 	idle.PushBack({ 4, 0, 28, 26 });
@@ -64,27 +59,24 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	LOG("Loading player2 textures");
+	LOG("Loading player textures");
+	position.x = 25;
+	position.y = 95;
 	bool ret = true;
-	player2 = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
-
-	position.x = App->player->position.x;
-	position.y = 100;
 	destroyed = false;
-	col= App->collision->AddCollider({ position.x, position.y, 32, 32 }, COLLIDER_PLAYER, this);
-	return true;
+	player2 = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
+	col = App->collision->AddCollider({ position.x,position.y,30,28 }, COLLIDER_PLAYER, this);
+	return ret;
 }
 
 // Unload assets
 bool ModulePlayer2::CleanUp()
 {
-	LOG("Unloading player 2");
+	LOG("Unloading player");
 
 	App->textures->Unload(player2);
-	if (col != nullptr) {
-	col->to_delete = true;
-	}
-	player2 = nullptr;
+	if (col != nullptr)
+		col->to_delete = true;
 
 	return true;
 }
@@ -100,7 +92,7 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.x < 290) {
+		if (position.x < 270) {
 			position.x += speed;
 		}
 	}
@@ -113,23 +105,24 @@ update_status ModulePlayer2::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &forward;
-		if (position.y > 10) {
+		current_animation = &backward;
+		if (position.y > 20) {
 			position.y -= speed;
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.y < 190) {
+		if (position.y < 192) {
 			position.y += speed;
 		}
 	}
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->junishot, position.x+10, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y+10, COLLIDER_PLAYER_SHOT);
 	}
+	col->SetPos(position.x, position.y);
 
 
 	// Draw everything
@@ -146,11 +139,11 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_temple, (Module*)App->intro);
 
-		/*App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
 
 		destroyed = true;
 	}

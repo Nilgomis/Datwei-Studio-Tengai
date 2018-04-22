@@ -8,7 +8,6 @@
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
-class ModuleAudio;
 class ModuleRender;
 class ModuleParticles;
 class ModuleSceneTemple;
@@ -19,7 +18,7 @@ class ModulePlayer2;
 class ModuleFadeToBlack;
 class ModuleCollision;
 class ModuleEnemies;
-class ModuleFont;
+class ModuleEndScreen;
 class Module;
 
 class Application
@@ -31,7 +30,6 @@ public:
 	ModuleRender* render;
 	ModuleInput* input;
 	ModuleTextures* textures;
-	ModuleAudio* audio;
 	ModuleSceneTemple* scene_temple;
 	ModuleStartScreen* intro;
 	ModuleBackground* background;
@@ -41,7 +39,7 @@ public:
 	ModuleFadeToBlack* fade;
 	ModuleParticles* particles;
 	ModuleEnemies* enemies;
-	ModuleFont* font;
+	ModuleEndScreen* end_screen;
 
 public:
 

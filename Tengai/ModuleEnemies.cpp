@@ -3,18 +3,17 @@
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
-#include "ModuleAudio.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "EnemyPegTop.h"
 #include "EnemyDemonWheel.h"
+#include "ModuleSceneTemple.h"
 
-#define SPAWN_MARGIN 50
+//#define SPAWN_MARGIN 50
+#define DESPAWN_TIME 20
 
 ModuleEnemies::ModuleEnemies()
 {
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		enemies[i] = nullptr;
 }
 
 // Destructor
@@ -25,18 +24,31 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprite = App->textures->Load("Assets/Sprites/Enemies/spriteEnemies.png");
+	sprites = App->textures->Load("Assets/Sprites/Enemies/spriteEnemies.png");
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		enemies[i] = nullptr;
 	return true;
 }
 
 update_status ModuleEnemies::PreUpdate()
 {
 	// check camera position to decide what to spawn
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	/*for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
 			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			{
+				SpawnEnemy(queue[i]);
+				queue[i].type = ENEMY_TYPES::NO_TYPE;
+			}
+		}
+	}*/
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
+		{
+			if (App->scene_temple->Time() >= queue[i].time && App->scene_temple->Time() < queue[i].time+1)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -54,7 +66,7 @@ update_status ModuleEnemies::Update()
 		if(enemies[i] != nullptr) enemies[i]->Move();
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr) enemies[i]->Draw(sprite);
+		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
 
 	return UPDATE_CONTINUE;
 }
@@ -66,10 +78,12 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			//if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if (App->scene_temple->Time() > enemies[i]->time+DESPAWN_TIME)
 			{
 				delete enemies[i];
 				enemies[i] = nullptr;
+				LOG("Despawned enemy: %i" + i);
 			}
 		}
 	}
@@ -82,7 +96,7 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(sprite);
+	App->textures->Unload(sprites);
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -96,7 +110,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, float time)
 {
 	bool ret = false;
 
@@ -107,6 +121,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
+			queue[i].time = time;
 			ret = true;
 			break;
 		}
@@ -126,12 +141,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		switch (info.type)
 		{
 			case ENEMY_TYPES::DEMONWHEEL:
-			enemies[i] = new EnemyDemonWheel(info.x,info.y);
+			enemies[i] = new EnemyDemonWheel(info.x,info.y,info.time);
+			LOG("Spawned enemy: %i" + i);
 			break;
 
-			case ENEMY_TYPES::PEGTOP:
-			enemies[i] = new EnemyPegTop(info.x, info.y);
-			break;
+			/*case ENEMY_TYPES::PEGTOP:
+			enemies[i] = new EnemyPegTop(info.x, info.y, info.time);
+			break;*/
 
 		}
 	}

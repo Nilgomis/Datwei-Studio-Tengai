@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "Globals.h"
 
-EnemyPegTop::EnemyPegTop(int x, int y) : Enemy(x, y)
+EnemyPegTop::EnemyPegTop(int x, int y, float time) : Enemy(x, y, time)
 {
 	fly.PushBack({ 39, 10 , 42, 48 });
 	fly.PushBack({ 83, 10, 42, 48 });
@@ -13,7 +13,7 @@ EnemyPegTop::EnemyPegTop(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 42, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 42, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY_PEGTOP, (Module*)App->enemies);
 
 	original_y = y;
 }

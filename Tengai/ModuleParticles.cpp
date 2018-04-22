@@ -2,7 +2,6 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
-#include "ModuleAudio.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 
@@ -22,29 +21,44 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	playershot = App->textures->Load("Assets/Sprites/Characters/particles.png");
-	player2shot = App->textures->Load("Assets/Sprites/Characters/particles.png");
+	partsprite = App->textures->Load("Assets/Sprites/particles.png");
 	
 	// Explosion particle
+	/*explosion.anim.PushBack({ 274, 296, 33, 30 });
+	explosion.anim.PushBack({ 313, 296, 33, 30 });
+	explosion.anim.PushBack({ 346, 296, 33, 30 });
+	explosion.anim.PushBack({ 382, 296, 33, 30 });
+	explosion.anim.PushBack({ 419, 296, 33, 30 });
+	explosion.anim.PushBack({ 457, 296, 33, 30 });
+	//explosion.anim.loop = false;
+	explosion.anim.speed = 0.3f;*/
 
+	// Shooting particle
 
-	// Shooting particles
-	// Sho
-	shoshot.anim.PushBack({ 108, 46, 32, 3 });
-	shoshot.anim.PushBack({ 150, 46, 32, 4 });
+	shoshot.anim.PushBack({ 149, 46, 32, 3 });
 
-	shoshot.anim.speed = 0.1f;
+	//shoshot.anim.speed = 0.25f;
 	shoshot.speed.x = 10;
-	shoshot.life = 3000;
+	shoshot.life = 1000;
 
-	// Junis
-	junishot.anim.PushBack({ 0, 117, 35, 12 });
-	junishot.anim.PushBack({ 0, 131, 35, 12 });
-	junishot.anim.PushBack({ 0, 145, 35, 12 });
+	junishot.anim.PushBack({ 11, 117, 31, 9 });
 
-	junishot.anim.speed = 0.05f;
+	//junishot.anim.speed = 0.25f;
 	junishot.speed.x = 10;
-	junishot.life = 6000;
+	junishot.life = 1000;
+
+	enemyshot.anim.PushBack({ 0,16,6,6 });
+	enemyshot.anim.PushBack({ 6,16,6,6 });
+	enemyshot.anim.PushBack({ 12,16,6,6 });
+	enemyshot.anim.PushBack({ 18,16,6,6 });
+	enemyshot.anim.PushBack({ 24,16,6,6 });
+	enemyshot.anim.PushBack({ 30,16,6,6 });
+	enemyshot.anim.PushBack({ 36,16,6,6 });
+	enemyshot.anim.PushBack({ 40,16,6,6 });
+	enemyshot.anim.speed = 0.25f;
+	enemyshot.speed.x = -2;
+	enemyshot.life = 3000;
+
 
 	return true;
 }
@@ -53,8 +67,7 @@ bool ModuleParticles::Start()
 bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
-	App->textures->Unload(playershot);
-	App->textures->Unload(player2shot);
+	App->textures->Unload(partsprite);
 
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -86,8 +99,10 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(playershot, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
-			App->render->Blit(player2shot, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			//move colliders
+			p->collider->SetPos(p->position.x, p->position.y);
+			//draw particles
+			App->render->Blit(partsprite, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 
 			if (p->fx_played == false)
 			{
@@ -109,9 +124,12 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
-			p->position.y = y+10;
-			if (collider_type != COLLIDER_NONE)
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			p->position.y = y;
+			if (collider_type != COLLIDER_NONE) {
+				SDL_Rect colRect = { x,y,p->anim.GetCurrentFrame().w,p->anim.GetCurrentFrame().h };
+				//p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				p->collider = App->collision->AddCollider(colRect, collider_type, this);
+			}
 			active[i] = p;
 			break;
 		}
@@ -125,7 +143,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			active[i]->collider->to_delete = true;
 			delete active[i];
 			active[i] = nullptr;
 			break;
@@ -161,9 +180,6 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
-
-	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
 
 	return ret;
 }

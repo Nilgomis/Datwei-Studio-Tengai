@@ -1,20 +1,21 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#define MAX_COLLIDERS 50
+#define MAX_COLLIDERS 100
 
 #include "Module.h"
 
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,
-	
+	COLLIDER_WALL,
 	COLLIDER_PLAYER,
 	COLLIDER_PLAYER_SHOT,
-	COLLIDER_ENEMY,
+	COLLIDER_ENEMY_WHEEL,
+	COLLIDER_ENEMY_PEGTOP,
 	COLLIDER_ENEMY_SHOT,
-	COLLIDER_POWER_UP,
-	COLLIDER_MAX,
+
+	COLLIDER_MAX
 };
 
 struct Collider
@@ -32,8 +33,10 @@ struct Collider
 
 	void SetPos(int x, int y)
 	{
-		rect.x = x;
-		rect.y = y;
+		if (this != nullptr) {
+			rect.x = x;
+			rect.y = y;
+		}
 	}
 
 	bool CheckCollision(const SDL_Rect& r) const;

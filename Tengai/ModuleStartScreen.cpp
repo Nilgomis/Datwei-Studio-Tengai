@@ -4,7 +4,6 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleAudio.h"
 #include "ModuleStartScreen.h"
 #include "ModulePlayer2.h"
 #include "ModuleSceneTemple.h"
@@ -65,30 +64,33 @@ bool ModuleStartScreen::Start()
 {
 
 	LOG("Loading sky intro");
-	App->player2->Disable();
 
 	//Reseting camera positions
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-	//App->scene_temple->Disable();//falta afegir un modul per a la pantalla final
+	App->player->Disable();
+	App->player2->Disable();
+	App->scene_temple->Disable();//falta afegir un modul per a la pantalla final
 	//main sprites
 	graphics = App->textures->Load("assets/sprites/UI/StartScreen/button_start.png");
 	graphics2 = App->textures->Load("assets/sprites/UI/StartScreen/background.png");
-	graphics3 = App->textures->Load("assets/sprites/UI/StartScreen/title&text.png");
+	graphics3 = App->textures->Load("assets/sprites/UI/StartScreen/titletext.png");
 
 	//Loading sprite layers-->Cloud waves scrolling in layers
 	background1 = App->textures->Load("assets/sprites/UI/StartScreen/waves.png");
 
 	//Loading Music
-	//Musics = App->audio->LoadMusic("Assets/Audio/OGG/Music/01_Gem_of_hope.ogg");
-	//Mix_PlayMusic(Musics, -1);
+	/*music = App->audio->LoadMusic("assets/audio/music/01_Gem_of_hope.ogg");
+	Mix_PlayMusic(music, -1);*/
 	return true;
 }
 
 update_status ModuleStartScreen::Update()
 {
 	// Switching between scenes
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) App->fade->FadeToBlack(this, App->scene_temple, 2);
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+		App->fade->FadeToBlack(this, App->scene_temple, 2);
+	}
 
 	//Draw Background
 	App->render->Blit(graphics2, 0, 0, &background);
@@ -104,7 +106,7 @@ update_status ModuleStartScreen::Update()
 	s14 = s13;
 	App->render->Blit(background1, (int)s13, 127, &bg7);
 	s14 += bg7.w;
-	App->render->Blit(background1, (int)s4, 127, &bg7);
+	App->render->Blit(background1, (int)s14, 127, &bg7);
 
 	//6
 	s11 -= 0.75f;
@@ -112,9 +114,9 @@ update_status ModuleStartScreen::Update()
 		s11 = 0;
 	}
 	s12 = s11;
-	App->render->Blit(background1, (int)s11, 132, &bg6);
+	App->render->Blit(background1, (int)s11, 131, &bg6);
 	s12 += bg6.w;
-	App->render->Blit(background1, (int)s12, 132, &bg6);
+	App->render->Blit(background1, (int)s12, 131, &bg6);
 
 	//5
 	s9 -= 1.00f;
@@ -163,9 +165,9 @@ update_status ModuleStartScreen::Update()
 		s1 = 0;
 	}
 	s2 = s1;
-	App->render->Blit(background1, (int)s1, 180, &bg1);
+	App->render->Blit(background1, (int)s1, 181, &bg1);
 	s2 += bg1.w;
-	App->render->Blit(background1, (int)s2, 180, &bg1);
+	App->render->Blit(background1, (int)s2, 181, &bg1);
 
 	// Draw main components
 	App->render->Blit(graphics3, 35, 6, &title);
@@ -195,8 +197,8 @@ bool ModuleStartScreen::CleanUp()
 	graphics = nullptr;
 
 	//Unloading Audio
-	//App->audio->UnloadMusic(Musics);
-	//Musics = nullptr;
-	
+	/*App->audio->UnloadMusic(music);
+	music = nullptr;
+	*/
 	return true;
 }

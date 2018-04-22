@@ -14,7 +14,7 @@ private:
 
 public:
 
-	EnemyPegTop(int x, int y);
+	EnemyPegTop(int x, int y, float time);
 
 	void Move();
 };

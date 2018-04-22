@@ -15,9 +15,10 @@ protected:
 
 public:
 	iPoint position;
+	float time;
 
 public:
-	Enemy(int x, int y);
+	Enemy(int x, int y, float time);
 	virtual ~Enemy();
 	const Collider* GetCollider() const;
 	virtual void Move() {};
