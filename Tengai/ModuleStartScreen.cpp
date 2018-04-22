@@ -15,7 +15,7 @@ ModuleStartScreen::~ModuleStartScreen()
 // Load assets
 bool ModuleStartScreen::Start()
 {
-	LOG("Loading Temple intro");
+	LOG("Loading space intro");
 
 	background = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
 
@@ -27,7 +27,7 @@ bool ModuleStartScreen::Start()
 // UnLoad assets
 bool ModuleStartScreen::CleanUp()
 {
-	LOG("Unloading Temple scene");
+	LOG("Unloading space scene");
 
 	App->textures->Unload(background);
 
@@ -41,6 +41,7 @@ update_status ModuleStartScreen::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
 	{
+		LOG("Fade called");
 		App->fade->FadeToBlack(this, (Module*)App->scene_temple);
 	}
 

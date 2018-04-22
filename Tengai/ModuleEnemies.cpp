@@ -6,12 +6,13 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "EnemyPegTop.h"
+#include "EnemyFireWheel.h"
 
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
 
@@ -23,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Assets/Sprites/Enemies/peg_top.png");
+	firewheelsprite = App->textures->Load("Game/Assets/Sprites/Enemies/Demon Wheel/demonwheel.png");
 
 	return true;
 }
@@ -31,11 +32,11 @@ bool ModuleEnemies::Start()
 update_status ModuleEnemies::PreUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
+		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -49,11 +50,11 @@ update_status ModuleEnemies::PreUpdate()
 // Called before render is available
 update_status ModuleEnemies::Update()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Move();
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
+		if(enemies[i] != nullptr) enemies[i]->Move();
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
+		if(enemies[i] != nullptr) enemies[i]->Draw(firewheelsprite);
 
 	return UPDATE_CONTINUE;
 }
@@ -61,11 +62,11 @@ update_status ModuleEnemies::Update()
 update_status ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if(enemies[i] != nullptr)
 		{
-			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
 			{
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -81,11 +82,11 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(sprites);
+	App->textures->Unload(firewheelsprite);
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+		if(enemies[i] != nullptr)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -95,13 +96,13 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, int time)
 {
 	bool ret = false;
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (queue[i].type == ENEMY_TYPES::NO_TYPE)
+		if(queue[i].type == ENEMY_TYPES::NO_TYPE)
 		{
 			queue[i].type = type;
 			queue[i].x = x;
@@ -118,30 +119,27 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
+	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
-	if (i != MAX_ENEMIES)
+	if(i != MAX_ENEMIES)
 	{
-		switch (info.type)
+		switch(info.type)
 		{
-		case ENEMY_TYPES::PEGTOP:
+			case ENEMY_TYPES::FIREWHEEL:
+			enemies[i] = new EnemyFireWheel(info.x,info.y);
+			break;
+			case ENEMY_TYPES::PEGTOP:
 			enemies[i] = new EnemyPegTop(info.x, info.y);
 			break;
-		/*case ENEMY_TYPES::BROWNSHIP:
-			enemies[i] = new Enemy_BrownShip(info.x, info.y);
-			break;
-		case ENEMY_TYPES::MECH:
-			enemies[i] = new Enemy_Mech(info.x, info.y);
-			break;*/
 		}
 	}
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			App->particles->AddParticle(App->particles->explosion, enemies[i]->position.x, enemies[i]->position.y);
 			delete enemies[i];

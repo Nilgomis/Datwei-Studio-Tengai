@@ -297,3 +297,5 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+Tengai/SDL/libx64/msvcmrt.lib
+Tengai/SDL/libx64/msvcrt.lib

@@ -5,30 +5,28 @@
 #include "ModuleTextures.h"
 #include "ModuleSceneTemple.h"
 #include "ModuleStartScreen.h"
-//#include "ModuleBackground.h"
+#include "ModuleBackground.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
-#include "ModuleFonts.h"
-
 
 Application::Application()
 {
-	modules[0] = window			= new ModuleWindow();
-	modules[1] = render			= new ModuleRender();
-	modules[2] = input			= new ModuleInput();
-	modules[3] = textures		= new ModuleTextures();
-	modules[4] = fonts			= new ModuleFonts();
-	modules[5] = intro			= new ModuleStartScreen();
-	modules[6] = scene_temple	= new ModuleSceneTemple();
-	modules[7] = enemies		= new ModuleEnemies();
-	//modules[7] = background		= new ModuleBackground();
-	modules[8] = player			= new ModulePlayer();
-	modules[9] = particles		= new ModuleParticles();
-	modules[10] = collision		= new ModuleCollision();
-	modules[11] = fade			= new ModuleFadeToBlack();
+	int i = 0;
+	modules[i++] = window			= new ModuleWindow();
+	modules[i++] = render			= new ModuleRender();
+	modules[i++] = input			= new ModuleInput();
+	modules[i++] = textures			= new ModuleTextures();
+	modules[i++] = intro			= new ModuleStartScreen();
+	modules[i++] = scene_temple		= new ModuleSceneTemple();
+	modules[i++] = enemies			= new ModuleEnemies();
+	modules[i++] = player			= new ModulePlayer();
+	modules[i++] = particles		= new ModuleParticles();
+	modules[i++] = collision		= new ModuleCollision();
+	modules[i++] = fade				= new ModuleFadeToBlack();
+	modules[i++] = background		= new ModuleBackground();
 }	
 
 Application::~Application()
@@ -45,7 +43,7 @@ bool Application::Init()
 	scene_temple->Disable();
 	player->Disable();
 	collision->Disable();
-	enemies->Disable();
+	background->Disable();
 	//
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

@@ -23,9 +23,6 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	int font_score = -1;
-	char score_text[10];
-	uint score = 0;
 	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation forward;
@@ -33,6 +30,7 @@ public:
 	iPoint position;
 	Collider* col;
 	bool destroyed = false;
+	float cooldown = 0.1f;
 
 };
 

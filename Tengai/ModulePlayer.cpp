@@ -6,10 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleFonts.h"
 #include "ModulePlayer.h"
-
-#include <stdio.h>
 
 
 ModulePlayer::ModulePlayer()
@@ -21,22 +18,6 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
-	/*do
-	{
-		idle.PushBack({ 244, 11, 28, 25 });
-		idle.PushBack({ 281, 8, 30, 28 });
-		idle.PushBack({ 311, 10, 32, 25 });
-		idle.PushBack({ 350, 11, 30, 25 });
-		idle.PushBack({ 388, 12, 27, 24 });
-		idle.PushBack({ 421, 10, 28, 26 });
-		idle.PushBack({ 454, 12, 32, 25 });
-		idle.PushBack({ 493, 11, 31, 25 });
-		idle.PushBack({ 531, 12, 27, 24 });
-		idle.PushBack({ 565, 9, 31, 27 });
-		idle.PushBack({ 601, 8, 31, 28 });
-
-		idle.speed = 0.2f;
-	} while (position.y = 200);*/
 
 	idle.speed = 0.2f;
 
@@ -44,31 +25,14 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 36, 8, 30, 28 });
 	forward.PushBack({ 73, 8, 30, 28 });
 	forward.PushBack({ 110, 9, 30, 28 });
-
-	/*do
-	{
-		forward.PushBack({ 244, 11, 28, 25 });
-		forward.PushBack({ 281, 8, 30, 28 });
-		forward.PushBack({ 311, 10, 32, 25 });
-		forward.PushBack({ 350, 11, 30, 25 });
-		forward.PushBack({ 388, 12, 27, 24 });
-		forward.PushBack({ 421, 10, 28, 26 });
-		forward.PushBack({ 454, 12, 32, 25 });
-		forward.PushBack({ 493, 11, 31, 25 });
-		forward.PushBack({ 531, 12, 27, 24 });
-		forward.PushBack({ 565, 9, 31, 27 });
-		forward.PushBack({ 601, 8, 31, 28 });
-
-		forward.speed = 0.2f;
-	} while (position.y = 200);*/
-
+	//forward.loop = false;
 	forward.speed = 0.2f;
 
 	backward.PushBack({ 181, 8, 23, 28 });
 	backward.PushBack({ 147, 8, 25, 28 });
 	backward.loop = false;
-
 	backward.speed = 0.2f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -77,21 +41,10 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	LOG("Loading player");
-
+	LOG("Loading player textures");
+	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
-	
-	destroyed = false;
-	position.x = 150;
-	position.y = 120;
-	score = 0;
-
-	col = App->collision->AddCollider({ position.x, position.y, 32, 16 }, COLLIDER_PLAYER, this);
-
-	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
-
-
-	return true;
+	return ret;
 }
 
 // Unload assets
@@ -100,8 +53,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
-	App->fonts->UnLoad(font_score);
-	if (col)
+	if (col != nullptr)
 		col->to_delete = true;
 
 	return true;
@@ -113,38 +65,53 @@ update_status ModulePlayer::Update()
 	Animation* current_animation = &idle;
 
 	float speed = 2.5f;
+	cooldown -= 0.04f;
 
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		position.x += speed;
+		if (position.x < 290) {
+			position.x += speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &backward;
-		position.x -= speed;
+		if (position.x > 0) {
+			position.x -= speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		position.y -= speed;
+		if (position.y > 10) {
+			position.y -= speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		position.y += speed;
+		if (position.y < 190) {
+			/*forward.PushBack({ 244, 11, 28, 25 });
+			forward.PushBack({ 281, 8, 30, 28 });
+			forward.PushBack({ 311, 10, 32, 25 });
+			forward.PushBack({ 350, 11, 30, 25 });
+			forward.PushBack({ 388, 12, 27, 24 });
+			forward.PushBack({ 421, 10, 28, 26 });
+			forward.PushBack({ 454, 12, 32, 25 });
+			forward.PushBack({ 493, 11, 31, 25 });
+			forward.PushBack({ 531, 12, 27, 24 });
+			forward.PushBack({ 565, 9, 31, 27 });
+			forward.PushBack({ 601, 8, 31, 28 });
+
+			forward.speed = 0.2f;*/
+			position.y += speed;
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_A] && App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &backward;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_A] && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		current_animation = &backward;
-	}
+
 	// Shooting
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
 		App->particles->AddParticle(App->particles->shoot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
 	}
@@ -153,9 +120,6 @@ update_status ModulePlayer::Update()
 
 	if (destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-
-	// Draw UI (score) --------------------------------------
-	// sprintf_s(score_text, 10, "%7d", score);
 
 	return UPDATE_CONTINUE;
 }

@@ -2,6 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
+#include "EnemyFireWheel.h"
 #include "EnemyPegTop.h"
 
 #define MAX_ENEMIES 100
@@ -9,9 +10,8 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
+	FIREWHEEL,
 	PEGTOP,
-	//BROWNSHIP,
-	//MECH,
 };
 
 class Enemy;
@@ -36,7 +36,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	bool AddEnemy(ENEMY_TYPES type, int x, int y);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y,int time);
 
 private:
 
@@ -46,7 +46,7 @@ private:
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
-	SDL_Texture* sprites;
+	SDL_Texture* firewheelsprite;
 };
 
 #endif // __ModuleEnemies_H__

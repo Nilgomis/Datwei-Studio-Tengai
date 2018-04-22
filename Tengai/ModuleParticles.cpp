@@ -3,7 +3,6 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleCollision.h"
 #include "ModuleParticles.h"
 
 #include "SDL/include/SDL_timer.h"
@@ -41,7 +40,7 @@ ModuleParticles::ModuleParticles()
 	shoot.anim.PushBack({ 360, 138, 11, 15 });*/
 
 	shoot.anim.speed = 0.25f;
-	shoot.speed.x = 5;
+	shoot.speed.x = 10;
 	shoot.life = 3000;
 }
 
@@ -54,6 +53,7 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 
+	
 	return true;
 }
 
@@ -96,7 +96,7 @@ update_status ModuleParticles::Update()
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play sudio
+				// Play audio
 			}
 		}
 	}
@@ -113,7 +113,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
-			p->position.y = y;
+			p->position.y = y+10;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -150,12 +150,6 @@ Particle::Particle(const Particle& p) :
 	fx(p.fx), born(p.born), life(p.life)
 {}
 
-Particle::~Particle()
-{
-	if (collider != nullptr)
-		collider->to_delete = true;
-}
-
 bool Particle::Update()
 {
 	bool ret = true;
@@ -171,9 +165,6 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
-
-	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
 
 	return ret;
 }

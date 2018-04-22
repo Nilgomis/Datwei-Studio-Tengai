@@ -13,7 +13,7 @@
       <UniqueIdentifier>{78a7f487-1d77-4fdc-9f51-f067eccd6239}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Enemies">
-      <UniqueIdentifier>{b505b3bd-7404-47e2-a29e-b73d19dc583b}</UniqueIdentifier>
+      <UniqueIdentifier>{53868fce-c380-4b0c-b11d-a273172ac186}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,14 +68,20 @@
     <ClInclude Include="ModuleSceneTemple.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePlayer2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="EnemyFireWheel.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleFonts.h">
-      <Filter>Modules</Filter>
+    <ClInclude Include="EnemyPegTop.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,8 +127,14 @@
     <ClCompile Include="ModuleSceneTemple.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModulePlayer2.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleEnemies.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFireWheel.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="EnemyPegTop.cpp">
       <Filter>Modules\Enemies</Filter>
@@ -130,13 +142,5 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleFonts.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="EnemyPegTop.h">
-      <Filter>Modules\Enemies</Filter>
-    </None>
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
-/*#include "Globals.h"
+#include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
+#include "ModuleCollision.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -26,6 +27,7 @@ bool ModuleBackground::Start()
 	graphics = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
 	graphics2 = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
 	return ret;
+
 }
 
 // Update: draw background
@@ -45,4 +47,4 @@ update_status ModuleBackground::Update()
 	
 
 	return UPDATE_CONTINUE;
-}*/
+}

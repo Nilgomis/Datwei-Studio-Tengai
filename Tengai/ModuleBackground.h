@@ -1,4 +1,4 @@
-/*#ifndef __ModuleBackground_H__
+#ifndef __ModuleBackground_H__
 #define __ModuleBackground_H__
 
 #include "Module.h"
@@ -29,4 +29,4 @@ public:
 
 };
 
-#endif*/
+#endif
