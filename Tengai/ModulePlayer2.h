@@ -22,7 +22,7 @@ public:
 
 public:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* player2 = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation forward;

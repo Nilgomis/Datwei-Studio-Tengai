@@ -24,8 +24,8 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	firewheelsprite = App->textures->Load("Game/Assets/Sprites/Enemies/Demon Wheel/demonwheel.png");
-
+	firewheelsprite = App->textures->Load("Assets/Sprites/Enemies/Demon Wheel/SpriteSheetDemonWheel.png");
+	pegtopsprite = App->textures->Load("Assets/Sprites/Enemies/DemponPegTop/DemponPegTop.png");
 	return true;
 }
 
@@ -56,6 +56,9 @@ update_status ModuleEnemies::Update()
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(firewheelsprite);
 
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		if (enemies[i] != nullptr) enemies[i]->Draw(pegtopsprite);
+
 	return UPDATE_CONTINUE;
 }
 
@@ -83,6 +86,7 @@ bool ModuleEnemies::CleanUp()
 	LOG("Freeing all enemies");
 
 	App->textures->Unload(firewheelsprite);
+	App->textures->Unload(pegtopsprite);
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{

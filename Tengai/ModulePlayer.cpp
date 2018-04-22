@@ -43,7 +43,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
+	player = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 	return ret;
 }
 
@@ -52,7 +52,7 @@ bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
 
-	App->textures->Unload(graphics);
+	App->textures->Unload(player);
 	if (col != nullptr)
 		col->to_delete = true;
 
@@ -119,7 +119,7 @@ update_status ModulePlayer::Update()
 	// Draw everything
 
 	if (destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		App->render->Blit(player, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }

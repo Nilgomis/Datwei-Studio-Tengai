@@ -14,7 +14,27 @@ ModulePlayer2::ModulePlayer2()
 	position.x = 25;
 	position.y = 95;
 
-	// idle animation 
+	// idle animation									// JUNIS ANIMATION
+	/*idle.PushBack({ 36, 8, 30, 28 });
+	idle.PushBack({ 73, 8, 30, 28 });
+	idle.PushBack({ 110, 9, 30, 28 });
+
+	idle.speed = 0.2f;
+
+
+	forward.PushBack({ 4, 0, 28, 25 });
+	forward.PushBack({ 46, 0, 28, 26 });
+	forward.PushBack({ 89, 1, 28, 26 });
+
+	forward.speed = 0.2f;
+
+	backward.PushBack({ 0, 36, 26, 24 });
+	backward.PushBack({ 41, 35, 20, 27 });
+	backward.PushBack({ 79, 33, 17, 29 });
+	backward.loop = false;
+	backward.speed = 0.2f;*/
+
+	// idle animation									// SHO ANIMATION
 	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
@@ -25,7 +45,7 @@ ModulePlayer2::ModulePlayer2()
 	forward.PushBack({ 36, 8, 30, 28 });
 	forward.PushBack({ 73, 8, 30, 28 });
 	forward.PushBack({ 110, 9, 30, 28 });
-
+	forward.loop = false;
 	forward.speed = 0.2f;
 
 	backward.PushBack({ 181, 8, 23, 28 });
@@ -43,7 +63,7 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
+	player2 = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_Spritesheet.png");
 	return ret;
 }
 
@@ -52,7 +72,7 @@ bool ModulePlayer2::CleanUp()
 {
 	LOG("Unloading player");
 
-	App->textures->Unload(graphics);
+	App->textures->Unload(player2);
 	if (col != nullptr)
 		col->to_delete = true;
 
@@ -105,7 +125,7 @@ update_status ModulePlayer2::Update()
 	// Draw everything
 
 	if (destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+		App->render->Blit(player2, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }

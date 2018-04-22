@@ -91,11 +91,20 @@ update_status ModuleCollision::PreUpdate()
 // Called before render is available
 update_status ModuleCollision::Update()
 {
+
+	DebugDraw();
+
+	return UPDATE_CONTINUE;
+}
+
+// Called before render is available
+void ModuleCollision::DebugDraw()
+{
 	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
 		debug = !debug;
 
 	if (debug == false)
-		return UPDATE_CONTINUE;
+		return /*UPDATE_CONTINUE*/;
 
 	Uint8 alpha = 80;
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
@@ -127,8 +136,9 @@ update_status ModuleCollision::Update()
 		}
 	}
 
-	return UPDATE_CONTINUE;
+	//return UPDATE_CONTINUE;
 }
+
 
 // Called before quitting
 bool ModuleCollision::CleanUp()
