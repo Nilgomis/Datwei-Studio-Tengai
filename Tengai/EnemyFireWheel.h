@@ -15,7 +15,7 @@ private:
 public:
 
 	EnemyFireWheel(int x, int y);
-
+	bool Start();
 	void Move();
 };
 

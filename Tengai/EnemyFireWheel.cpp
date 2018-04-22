@@ -4,7 +4,7 @@
 #include "Globals.h"
 
 EnemyFireWheel::EnemyFireWheel(int x, int y) : Enemy(x, y)
-{
+{/*
 	fly.PushBack({5,6,24,24});
 	fly.PushBack({38, 6, 24, 24});
 	fly.PushBack({71, 6, 24, 24});
@@ -19,11 +19,19 @@ EnemyFireWheel::EnemyFireWheel(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({0, 0, 24, 24}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	original_y = y;
+	original_y = y;*/
+}
+
+bool EnemyFireWheel::Start()
+{
+	LOG("Loading player textures");
+	bool ret = true;
+	//enemy = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
+	return ret;
 }
 
 void EnemyFireWheel::Move()
-{
+{/*
 	if(going_up)
 	{
 		if(wave > 1.0f)
@@ -41,4 +49,5 @@ void EnemyFireWheel::Move()
 
 	position.y = original_y + int(25.0f * sinf(wave));
 	position.x -= 1;
+	*/
 }

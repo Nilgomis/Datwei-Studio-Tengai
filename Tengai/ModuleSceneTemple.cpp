@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleStartScreen.h"
 #include "ModuleSceneTemple.h"
 #include "ModuleBackground.h"
 
