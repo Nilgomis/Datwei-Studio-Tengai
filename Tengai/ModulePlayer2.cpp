@@ -15,7 +15,7 @@ ModulePlayer2::ModulePlayer2()
 	position.y = 95;
 
 	// idle animation									// JUNIS ANIMATION
-	/*idle.PushBack({ 36, 8, 30, 28 });
+	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
 
@@ -32,9 +32,9 @@ ModulePlayer2::ModulePlayer2()
 	backward.PushBack({ 41, 35, 20, 27 });
 	backward.PushBack({ 79, 33, 17, 29 });
 	backward.loop = false;
-	backward.speed = 0.2f;*/
+	backward.speed = 0.2f;
 
-	// idle animation									// SHO ANIMATION
+	/*// idle animation									// SHO ANIMATION
 	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
@@ -51,7 +51,7 @@ ModulePlayer2::ModulePlayer2()
 	backward.PushBack({ 181, 8, 23, 28 });
 	backward.PushBack({ 147, 8, 25, 28 });
 	backward.loop = false;
-	backward.speed = 0.2f;
+	backward.speed = 0.2f;*/
 
 }
 
@@ -63,7 +63,7 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	player2 = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_Spritesheet.png");
+	player2 = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
 	return ret;
 }
 

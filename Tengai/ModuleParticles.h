@@ -45,7 +45,8 @@ public:
 
 private:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* playershot = nullptr;
+	SDL_Texture* player2shot = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
