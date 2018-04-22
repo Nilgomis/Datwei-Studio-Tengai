@@ -58,7 +58,6 @@ bool ModuleStartScreen::Init() {
 	s13 = 0.0;
 	s14 = 0.0;
 
-
 	return ret;
 }
 bool ModuleStartScreen::Start()
@@ -165,7 +164,7 @@ update_status ModuleStartScreen::Update()
 	s2 = s1;
 	App->render->Blit(background1, (int)s1, 180, &bg1);
 	s2 += bg1.w;
-	App->render->Blit(background1, (int)s1, 180, &bg1);
+	App->render->Blit(background1, (int)s2, 180, &bg1);
 
 	// Draw main components
 	App->render->Blit(graphics3, 35, 6, &title);
