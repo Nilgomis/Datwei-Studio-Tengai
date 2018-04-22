@@ -6,6 +6,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 #include "ModuleEnemies.h"
 #include "ModuleStartScreen.h"
 #include "ModuleSceneTemple.h"
@@ -37,10 +38,7 @@ bool ModuleSceneTemple::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 
-	// Colliders ---
-	App->collision->AddCollider({ 0, 224, 3930, 16 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1375, 0, 111, 96 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1375, 145, 111, 96 }, COLLIDER_WALL);
+	
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 600, 80);
@@ -52,6 +50,9 @@ bool ModuleSceneTemple::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80);
+
+	//Mix_PlayMusic(scene_temple, -1);
+
 	return true;
 }
 

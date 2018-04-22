@@ -1,4 +1,4 @@
-#include "Globals.h"
+/*#include "Globals.h"
 #include "Application.h"
 #include "ModuleAudio.h"
 
@@ -40,14 +40,14 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
-	/*for (int i = 0; i < MAX_MUSICS; ++i) {
+	for (int i = 0; i < MAX_MUSICS; ++i) {
 		if (Musics[i] != nullptr) {
 			Mix_PlayMusic(Musics[0], 1);
 		}
-		if (Effect[i] != nullptr) {
-			Mix_PlayChannel(-1, sfx[0], 0);
-		}
-	}*/
+		//if (Effect[i] != nullptr) {
+			//Mix_PlayChannel(-1, sfx[0], 0);
+		//}
+	}
 
 	return ret;
 
@@ -74,11 +74,11 @@ bool ModuleAudio::CleanUp()
 }
 
 // Load new music from file path
-Mix_Music * const ModuleAudio::LoadMusic(const char* path)
+_Mix_Music * const ModuleAudio::LoadMusic(const char* path)
 {
 	// Load a music from a path (must be a ogg)
 	// and check for errors
-	Mix_Music* music = Mix_LoadMUS(path);
+	_Mix_Music* music = Mix_LoadMUS(path);
 	if (!music) {
 		LOG("Mix_LoadMUS: %s\n", Mix_GetError());
 		// handle error
@@ -132,7 +132,7 @@ Mix_Chunk * const ModuleAudio::LoadEffect(const char* path)
 	return fx;
 }
 
-bool ModuleAudio::UnloadMusic(Mix_Music* mus) {
+bool ModuleAudio::UnloadMusic(_Mix_Music* mus) {
 
 	bool ret = false;
 
@@ -172,4 +172,4 @@ bool ModuleAudio::UnloadEffect(Mix_Chunk* _fx) {
 	}
 
 	return ret;
-}
+}*/

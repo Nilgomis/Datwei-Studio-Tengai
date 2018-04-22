@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "EnemyPegTop.h"
@@ -24,8 +25,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	demonwheelsprite = App->textures->Load("Assets/Sprites/Enemies/Demon Wheel/SpriteSheetDemonWheel.png");
-	pegtopsprite = App->textures->Load("Assets/Sprites/Enemies/DemponPegTop/DemonPegTop.png");
+	sprite = App->textures->Load("Assets/Sprites/Enemies/spriteEnemies.png");
 	return true;
 }
 
@@ -54,10 +54,7 @@ update_status ModuleEnemies::Update()
 		if(enemies[i] != nullptr) enemies[i]->Move();
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr) enemies[i]->Draw(demonwheelsprite);
-
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Draw(pegtopsprite);
+		if(enemies[i] != nullptr) enemies[i]->Draw(sprite);
 
 	return UPDATE_CONTINUE;
 }
@@ -85,8 +82,7 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(demonwheelsprite);
-	App->textures->Unload(pegtopsprite);
+	App->textures->Unload(sprite);
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{

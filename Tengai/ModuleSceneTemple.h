@@ -2,8 +2,12 @@
 #define __MODULESCENETemple_H__
 
 #include "Module.h"
+#include "ModuleAudio.h"
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib,"SDL_mixer/libx86/SDL2_mixer.lib")
 
 struct SDL_Texture;
+
 
 class ModuleSceneTemple : public Module
 {
@@ -24,6 +28,7 @@ public:
 	float bgXpos = 0;
 	float bgXpos2 = 256;
 	float bgXpos3 = 512;
+	//Mix_Music* scene_temple = nullptr;
 };
 
 #endif // __MODULESCENETemple_H__

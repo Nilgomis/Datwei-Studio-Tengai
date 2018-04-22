@@ -46,8 +46,7 @@ private:
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
-	SDL_Texture* demonwheelsprite;
-	SDL_Texture* pegtopsprite;
+	SDL_Texture* sprite;
 };
 
 #endif // __ModuleEnemies_H__

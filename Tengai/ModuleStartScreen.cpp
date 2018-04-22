@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 #include "ModuleStartScreen.h"
 #include "ModulePlayer2.h"
 #include "ModuleSceneTemple.h"
@@ -79,8 +80,8 @@ bool ModuleStartScreen::Start()
 	background1 = App->textures->Load("assets/sprites/UI/StartScreen/waves.png");
 
 	//Loading Music
-	/*music = App->audio->LoadMusic("assets/audio/music/01_Gem_of_hope.ogg");
-	Mix_PlayMusic(music, -1);*/
+	//Musics = App->audio->LoadMusic("Assets/Audio/OGG/Music/01_Gem_of_hope.ogg");
+	//Mix_PlayMusic(Musics, -1);
 	return true;
 }
 
@@ -194,8 +195,8 @@ bool ModuleStartScreen::CleanUp()
 	graphics = nullptr;
 
 	//Unloading Audio
-	/*App->audio->UnloadMusic(music);
-	music = nullptr;
-	*/
+	//App->audio->UnloadMusic(Musics);
+	//Musics = nullptr;
+	
 	return true;
 }

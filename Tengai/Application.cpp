@@ -3,6 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
+//#include "ModuleAudio.h"
 #include "ModuleSceneTemple.h"
 #include "ModuleStartScreen.h"
 #include "ModuleBackground.h"
@@ -12,6 +13,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModuleFont.h"
 
 Application::Application()
 {
@@ -20,6 +22,7 @@ Application::Application()
 	modules[i++] = render			= new ModuleRender();
 	modules[i++] = input			= new ModuleInput();
 	modules[i++] = textures			= new ModuleTextures();
+	//modules[i++] = audio			= new ModuleAudio();
 	modules[i++] = intro			= new ModuleStartScreen();
 	modules[i++] = scene_temple		= new ModuleSceneTemple();
 	modules[i++] = enemies			= new ModuleEnemies();
@@ -27,6 +30,7 @@ Application::Application()
 	modules[i++] = player2			= new ModulePlayer2();
 	modules[i++] = particles		= new ModuleParticles();
 	modules[i++] = collision		= new ModuleCollision();
+	modules[i++] = font				= new ModuleFont();
 	modules[i++] = fade				= new ModuleFadeToBlack();
 	modules[i++] = background		= new ModuleBackground();
 }	

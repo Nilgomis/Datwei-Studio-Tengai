@@ -32,6 +32,12 @@ bool ModuleInput::Init()
 // Calling every draw update
 update_status ModuleInput::PreUpdate()
 {
+	SDL_Event e;
+	SDL_PollEvent(&e);
+
+	if (e.type == SDL_QUIT)
+		return update_status::UPDATE_STOP;
+
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
