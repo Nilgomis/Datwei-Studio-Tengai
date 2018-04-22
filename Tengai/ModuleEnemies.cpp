@@ -6,7 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "EnemyPegTop.h"
-#include "EnemyFireWheel.h"
+#include "EnemyDemonWheel.h"
 
 #define SPAWN_MARGIN 50
 
@@ -24,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	firewheelsprite = App->textures->Load("Assets/Sprites/Enemies/Demon Wheel/SpriteSheetDemonWheel.png");
+	demonwheelsprite = App->textures->Load("Assets/Sprites/Enemies/Demon Wheel/SpriteSheetDemonWheel.png");
 	pegtopsprite = App->textures->Load("Assets/Sprites/Enemies/DemponPegTop/DemponPegTop.png");
 	return true;
 }
@@ -54,7 +54,7 @@ update_status ModuleEnemies::Update()
 		if(enemies[i] != nullptr) enemies[i]->Move();
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr) enemies[i]->Draw(firewheelsprite);
+		if(enemies[i] != nullptr) enemies[i]->Draw(demonwheelsprite);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr) enemies[i]->Draw(pegtopsprite);
@@ -85,7 +85,7 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(firewheelsprite);
+	App->textures->Unload(demonwheelsprite);
 	App->textures->Unload(pegtopsprite);
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
@@ -100,7 +100,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, int time)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 {
 	bool ret = false;
 
@@ -123,18 +123,20 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
 	uint i = 0;
-	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
+	for (; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
 
-	if(i != MAX_ENEMIES)
+	if (i != MAX_ENEMIES)
 	{
-		switch(info.type)
+		switch (info.type)
 		{
-			case ENEMY_TYPES::FIREWHEEL:
-			enemies[i] = new EnemyFireWheel(info.x,info.y);
+			case ENEMY_TYPES::DEMONWHEEL:
+			enemies[i] = new EnemyDemonWheel(info.x,info.y);
 			break;
+
 			case ENEMY_TYPES::PEGTOP:
 			enemies[i] = new EnemyPegTop(info.x, info.y);
 			break;
+
 		}
 	}
 }

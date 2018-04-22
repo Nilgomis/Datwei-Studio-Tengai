@@ -42,15 +42,15 @@ bool ModuleSceneTemple::Start()
 	App->collision->AddCollider({ 1375, 145, 111, 96 }, COLLIDER_WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::FIREWHEEL, 600, 80, 10);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIREWHEEL, 625, 80, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIREWHEEL, 640, 80, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::FIREWHEEL, 665, 80, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 625, 80 );
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 665, 80);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80, 10);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80);
 	return true;
 }
 

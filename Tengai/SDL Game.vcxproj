@@ -75,7 +75,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyFireWheel.h" />
+    <ClInclude Include="EnemyDemonWheel.h" />
     <ClInclude Include="EnemyPegTop.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -99,7 +99,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyFireWheel.cpp" />
+    <ClCompile Include="EnemyDemonWheel.cpp" />
     <ClCompile Include="EnemyPegTop.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
