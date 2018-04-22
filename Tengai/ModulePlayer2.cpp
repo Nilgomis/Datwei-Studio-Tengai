@@ -15,16 +15,16 @@ ModulePlayer2::ModulePlayer2()
 	position.y = 95;
 
 	// idle animation									// JUNIS ANIMATION
-	idle.PushBack({ 36, 8, 30, 28 });
-	idle.PushBack({ 73, 8, 30, 28 });
-	idle.PushBack({ 110, 9, 30, 28 });
+	idle.PushBack({ 4, 0, 28, 26 });
+	idle.PushBack({ 46, 1, 28, 27 });
+	idle.PushBack({ 89, 1, 28, 27 });
 
 	idle.speed = 0.2f;
 
 
-	forward.PushBack({ 4, 0, 28, 25 });
-	forward.PushBack({ 46, 0, 28, 26 });
-	forward.PushBack({ 89, 1, 28, 26 });
+	forward.PushBack({ 4, 0, 28, 26 });
+	forward.PushBack({ 46, 1, 28, 27 });
+	forward.PushBack({ 89, 1, 28, 27 });
 
 	forward.speed = 0.2f;
 

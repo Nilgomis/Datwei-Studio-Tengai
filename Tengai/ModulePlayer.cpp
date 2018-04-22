@@ -15,21 +15,22 @@ ModulePlayer::ModulePlayer()
 	position.y = 50;
 
 	// idle animation 
-	idle.PushBack({ 36, 8, 30, 28 });
-	idle.PushBack({ 73, 8, 30, 28 });
-	idle.PushBack({ 110, 9, 30, 28 });
+	idle.PushBack({ 38, 0, 29, 28 });
+	idle.PushBack({ 75, 0, 29, 28 });
+	idle.PushBack({ 112, 0, 29, 28 });
 
 	idle.speed = 0.2f;
 
 
-	forward.PushBack({ 36, 8, 30, 28 });
-	forward.PushBack({ 73, 8, 30, 28 });
-	forward.PushBack({ 110, 9, 30, 28 });
+	forward.PushBack({ 38, 0, 29, 28 });
+	forward.PushBack({ 75, 0, 29, 28 });
+	forward.PushBack({ 112, 0, 29, 28 });
 	//forward.loop = false;
 	forward.speed = 0.2f;
 
-	backward.PushBack({ 181, 8, 23, 28 });
-	backward.PushBack({ 147, 8, 25, 28 });
+	backward.PushBack({ 216, 1, 24, 26 });
+	backward.PushBack({ 183, 0, 22, 27 });
+	backward.PushBack({ 149, 0, 24, 27 });
 	backward.loop = false;
 	backward.speed = 0.2f;
 
