@@ -1,12 +1,15 @@
 #include "Globals.h"
 #include "Application.h"
+#include "Module.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
-#include "ModuleCollision.h"
+#include "ModulePlayer.h"
+#include "ModulePLayer2.h"
+#include "ModuleSceneTemple.h"
 #include "ModuleFadeToBlack.h"
-#include "ModulePlayer2.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -61,20 +64,27 @@ ModulePlayer2::~ModulePlayer2()
 // Load assets
 bool ModulePlayer2::Start()
 {
-	LOG("Loading player textures");
+	LOG("Loading player2 textures");
 	bool ret = true;
 	player2 = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
-	return ret;
+
+	position.x = App->player->position.x;
+	position.y = 100;
+	destroyed = false;
+	col= App->collision->AddCollider({ position.x, position.y, 32, 32 }, COLLIDER_PLAYER, this);
+	return true;
 }
 
 // Unload assets
 bool ModulePlayer2::CleanUp()
 {
-	LOG("Unloading player");
+	LOG("Unloading player 2");
 
 	App->textures->Unload(player2);
-	if (col != nullptr)
-		col->to_delete = true;
+	if (col != nullptr) {
+	col->to_delete = true;
+	}
+	player2 = nullptr;
 
 	return true;
 }
@@ -118,7 +128,7 @@ update_status ModulePlayer2::Update()
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->shoot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
 	}
 
 

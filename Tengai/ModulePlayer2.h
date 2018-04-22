@@ -22,6 +22,7 @@ public:
 
 public:
 
+	//bool isShooting;
 	SDL_Texture* player2 = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;

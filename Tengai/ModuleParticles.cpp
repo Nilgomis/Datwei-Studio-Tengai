@@ -12,36 +12,6 @@ ModuleParticles::ModuleParticles()
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	// Explosion particle
-	/*explosion.anim.PushBack({ 274, 296, 33, 30 });
-	explosion.anim.PushBack({ 313, 296, 33, 30 });
-	explosion.anim.PushBack({ 346, 296, 33, 30 });
-	explosion.anim.PushBack({ 382, 296, 33, 30 });
-	explosion.anim.PushBack({ 419, 296, 33, 30 });
-	explosion.anim.PushBack({ 457, 296, 33, 30 });
-	//explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;*/
-
-	// Shooting particle
-	//shoot.anim.PushBack({ 73, 151, 27, 3 });
-	shoot.anim.PushBack({ 148, 151, 32, 3 });
-	shoot.anim.PushBack({ 107, 151, 32, 4 });
-	/*shoot.anim.PushBack({ 97, 137, 11, 15 });
-	shoot.anim.PushBack({ 121, 139, 11, 15 });
-	shoot.anim.PushBack({ 144, 135, 11, 15 });
-	shoot.anim.PushBack({ 168, 135, 11, 15 });
-	shoot.anim.PushBack({ 192, 135, 11, 15 });
-	shoot.anim.PushBack({ 216, 136, 11, 15 });
-	shoot.anim.PushBack({ 240, 138, 11, 15 });
-	shoot.anim.PushBack({ 264, 135, 11, 15 });
-	shoot.anim.PushBack({ 288, 135, 11, 15 });
-	shoot.anim.PushBack({ 313, 135, 11, 15 });
-	shoot.anim.PushBack({ 337, 136, 11, 15 });
-	shoot.anim.PushBack({ 360, 138, 11, 15 });*/
-
-	shoot.anim.speed = 0.25f;
-	shoot.speed.x = 10;
-	shoot.life = 3000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -51,9 +21,30 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	playershot = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_spritesheet.png");
-	player2shot = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_spritesheet.png");
+	playershot = App->textures->Load("Assets/Sprites/Characters/particles.png");
+	player2shot = App->textures->Load("Assets/Sprites/Characters/particles.png");
 	
+	// Explosion particle
+
+
+	// Shooting particles
+	//Sho
+	shoshot.anim.PushBack({ 108, 46, 32, 3 });
+	shoshot.anim.PushBack({ 150, 46, 32, 4 });
+
+	shoshot.anim.speed = 0.1f;
+	shoshot.speed.x = 10;
+	shoshot.life = 3000;
+
+	// Junis
+	junishot.anim.PushBack({ 0, 117, 35, 12 });
+	junishot.anim.PushBack({ 0, 131, 35, 12 });
+	junishot.anim.PushBack({ 0, 145, 35, 12 });
+
+	junishot.anim.speed = 0.05f;
+	junishot.speed.x = 10;
+	junishot.life = 3000;
+
 	return true;
 }
 
@@ -133,7 +124,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			AddParticle(explosion, active[i]->position.x, active[i]->position.y);
 			delete active[i];
 			active[i] = nullptr;
 			break;
@@ -169,6 +160,9 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
 	return ret;
 }

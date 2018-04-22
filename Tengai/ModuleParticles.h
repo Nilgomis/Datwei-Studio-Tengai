@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 300
+#define MAX_ACTIVE_PARTICLES 150
 
 struct SDL_Texture;
 struct Collider;
@@ -27,6 +27,7 @@ struct Particle
 
 	Particle();
 	Particle(const Particle& p);
+	//~Particle();
 	bool Update();
 };
 
@@ -51,9 +52,10 @@ private:
 	uint last_particle = 0;
 
 public:
-
+	int time;
 	Particle explosion;
-	Particle shoot;
+	Particle shoshot;
+	Particle junishot;
 };
 
 #endif // __MODULEPARTICLES_H__
