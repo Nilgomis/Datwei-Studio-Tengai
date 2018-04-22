@@ -5,8 +5,10 @@
 #include "Globals.h"
 
 #define MAX_TEXTURES 50
+#define MAX_TEXTURE_PATH 100
 
 struct SDL_Texture;
+struct SDL_Surface;
 
 class ModuleTextures : public Module
 {
@@ -19,10 +21,12 @@ public:
 
 	SDL_Texture* const Load(const char* path);
 	bool Unload(SDL_Texture* texture);
+	SDL_Texture* LoadSurface(SDL_Surface* surface);
+	void GetSize(const SDL_Texture* texture, uint& width, uint& height) const;
 
 public:
 	SDL_Texture* textures[MAX_TEXTURES];
-	uint last_texture = 0;
 };
+
 
 #endif // __ModuleTextures_H__

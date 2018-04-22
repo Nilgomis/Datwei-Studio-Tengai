@@ -1,4 +1,4 @@
-#include "Globals.h"
+/*#include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -45,4 +45,4 @@ update_status ModuleBackground::Update()
 	
 
 	return UPDATE_CONTINUE;
-}
+}*/

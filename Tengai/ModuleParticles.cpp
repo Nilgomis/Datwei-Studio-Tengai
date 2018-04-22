@@ -12,29 +12,19 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
-}
-
-ModuleParticles::~ModuleParticles()
-{}
-
-// Load assets
-bool ModuleParticles::Start()
-{
-	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({ 274, 296, 33, 30 });
+	/*explosion.anim.PushBack({ 274, 296, 33, 30 });
 	explosion.anim.PushBack({ 313, 296, 33, 30 });
 	explosion.anim.PushBack({ 346, 296, 33, 30 });
 	explosion.anim.PushBack({ 382, 296, 33, 30 });
 	explosion.anim.PushBack({ 419, 296, 33, 30 });
 	explosion.anim.PushBack({ 457, 296, 33, 30 });
 	//explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.3f;*/
 
 	// Shooting particle
-	shoot.anim.PushBack({ 73, 151, 27, 3 });
+	//shoot.anim.PushBack({ 73, 151, 27, 3 });
 	shoot.anim.PushBack({ 148, 151, 32, 3 });
 	shoot.anim.PushBack({ 107, 151, 32, 4 });
 	/*shoot.anim.PushBack({ 97, 137, 11, 15 });
@@ -53,6 +43,16 @@ bool ModuleParticles::Start()
 	shoot.anim.speed = 0.25f;
 	shoot.speed.x = 5;
 	shoot.life = 3000;
+}
+
+ModuleParticles::~ModuleParticles()
+{}
+
+// Load assets
+bool ModuleParticles::Start()
+{
+	LOG("Loading particles");
+	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
 
 	return true;
 }
@@ -96,7 +96,7 @@ update_status ModuleParticles::Update()
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play particle fx here
+				// Play sudio
 			}
 		}
 	}
@@ -113,7 +113,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
-			p->position.y = y+10;
+			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -150,6 +150,12 @@ Particle::Particle(const Particle& p) :
 	fx(p.fx), born(p.born), life(p.life)
 {}
 
+Particle::~Particle()
+{
+	if (collider != nullptr)
+		collider->to_delete = true;
+}
+
 bool Particle::Update()
 {
 	bool ret = true;
@@ -165,6 +171,9 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
 	return ret;
 }

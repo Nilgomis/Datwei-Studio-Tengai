@@ -88,12 +88,21 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, bool use_camera)
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = (int)(-camera.x * speed) + x * SCREEN_SIZE;
-	rect.y = (int)(-camera.y * speed) + y * SCREEN_SIZE;
+
+	if (use_camera)
+	{
+		rect.x = (int)(-camera.x * speed) + x * SCREEN_SIZE;
+		rect.y = (int)(-camera.y * speed) + y * SCREEN_SIZE;
+	}
+	else
+	{
+		rect.x = x * SCREEN_SIZE;
+		rect.y = y * SCREEN_SIZE;
+	}
 
 	if (section != NULL)
 	{
@@ -117,6 +126,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	return ret;
 }
 
+
 bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera)
 {
 	bool ret = true;
@@ -129,9 +139,15 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	{
 		rec.x = (int)(-camera.x + rect.x * SCREEN_SIZE);
 		rec.y = (int)(-camera.y + rect.y * SCREEN_SIZE);
-		rec.w *= SCREEN_SIZE;
-		rec.h *= SCREEN_SIZE;
 	}
+	else
+	{
+		rec.x *= SCREEN_SIZE;
+		rec.y *= SCREEN_SIZE;
+	}
+
+	rec.w *= SCREEN_SIZE;
+	rec.h *= SCREEN_SIZE;
 
 	if (SDL_RenderFillRect(renderer, &rec) != 0)
 	{

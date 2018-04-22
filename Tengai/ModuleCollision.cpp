@@ -5,6 +5,9 @@
 
 ModuleCollision::ModuleCollision()
 {
+	for (uint i = 0; i < MAX_COLLIDERS; ++i)
+		colliders[i] = nullptr;
+
 	matrix[COLLIDER_WALL][COLLIDER_WALL] = false;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_WALL][COLLIDER_ENEMY] = false;
@@ -85,11 +88,19 @@ update_status ModuleCollision::PreUpdate()
 // Called before render is available
 update_status ModuleCollision::Update()
 {
+
+	DebugDraw();
+
+	return UPDATE_CONTINUE;
+}
+
+void ModuleCollision::DebugDraw()
+{
 	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
 		debug = !debug;
 
 	if (debug == false)
-		return UPDATE_CONTINUE;
+		return;
 
 	Uint8 alpha = 80;
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
@@ -108,13 +119,17 @@ update_status ModuleCollision::Update()
 		case COLLIDER_PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
+		case COLLIDER_ENEMY: // red
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
 		case COLLIDER_PLAYER_SHOT: // yellow
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
+		case COLLIDER_ENEMY_SHOT: // magenta
+			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+			break;
 		}
 	}
-
-	return UPDATE_CONTINUE;
 }
 
 // Called before quitting

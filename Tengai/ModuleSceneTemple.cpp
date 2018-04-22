@@ -32,10 +32,10 @@ bool ModuleSceneTemple::Start()
 	App->collision->AddCollider({ 1375, 145, 111, 96 }, COLLIDER_WALL);
 
 	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 665, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80);
 
 	return true;
 }
@@ -43,10 +43,11 @@ bool ModuleSceneTemple::Start()
 // UnLoad assets
 bool ModuleSceneTemple::CleanUp()
 {
-	LOG("Unloading Temple scene");
+	LOG("Unloading space scene");
 
 	App->textures->Unload(background);
 
+	App->enemies->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
@@ -58,10 +59,11 @@ bool ModuleSceneTemple::CleanUp()
 update_status ModuleSceneTemple::Update()
 {
 	// Move camera forward -----------------------------
-	//App->render->camera.x += 1 * SCREEN_SIZE;
+	App->render->camera.x += 1 * SCREEN_SIZE;
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
+	App->render->Blit(hud, 0, 240, NULL, 0.0f, false);
 
 	return UPDATE_CONTINUE;
 }

@@ -6,7 +6,10 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 #include "ModulePlayer.h"
+
+#include <stdio.h>
 
 
 ModulePlayer::ModulePlayer()
@@ -66,9 +69,6 @@ ModulePlayer::ModulePlayer()
 	backward.loop = false;
 
 	backward.speed = 0.2f;
-
-	
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -77,10 +77,21 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-	LOG("Loading player textures");
-	bool ret = true;
+	LOG("Loading player");
+
 	graphics = App->textures->Load("Assets/Sprites/Characters/Sho/Sho spritesheet.png");
-	return ret;
+	
+	destroyed = false;
+	position.x = 150;
+	position.y = 120;
+	score = 0;
+
+	col = App->collision->AddCollider({ position.x, position.y, 32, 16 }, COLLIDER_PLAYER, this);
+
+	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+
+
+	return true;
 }
 
 // Unload assets
@@ -89,7 +100,8 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
-	if (col != nullptr)
+	App->fonts->UnLoad(font_score);
+	if (col)
 		col->to_delete = true;
 
 	return true;
@@ -141,6 +153,9 @@ update_status ModulePlayer::Update()
 
 	if (destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+
+	// Draw UI (score) --------------------------------------
+	// sprintf_s(score_text, 10, "%7d", score);
 
 	return UPDATE_CONTINUE;
 }

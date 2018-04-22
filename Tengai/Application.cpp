@@ -5,12 +5,14 @@
 #include "ModuleTextures.h"
 #include "ModuleSceneTemple.h"
 #include "ModuleStartScreen.h"
-#include "ModuleBackground.h"
+//#include "ModuleBackground.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleEnemies.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
+#include "ModuleFonts.h"
+
 
 Application::Application()
 {
@@ -18,10 +20,11 @@ Application::Application()
 	modules[1] = render			= new ModuleRender();
 	modules[2] = input			= new ModuleInput();
 	modules[3] = textures		= new ModuleTextures();
-	modules[4] = intro			= new ModuleStartScreen();
-	modules[5] = scene_temple	= new ModuleSceneTemple();
-	modules[6] = enemies		= new ModuleEnemies();
-	modules[7] = background		= new ModuleBackground();
+	modules[4] = fonts			= new ModuleFonts();
+	modules[5] = intro			= new ModuleStartScreen();
+	modules[6] = scene_temple	= new ModuleSceneTemple();
+	modules[7] = enemies		= new ModuleEnemies();
+	//modules[7] = background		= new ModuleBackground();
 	modules[8] = player			= new ModulePlayer();
 	modules[9] = particles		= new ModuleParticles();
 	modules[10] = collision		= new ModuleCollision();

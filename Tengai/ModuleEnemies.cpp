@@ -7,7 +7,6 @@
 #include "Enemy.h"
 #include "EnemyPegTop.h"
 
-
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -125,13 +124,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		case ENEMY_TYPES::REDBIRD:
+		case ENEMY_TYPES::PEGTOP:
 			enemies[i] = new EnemyPegTop(info.x, info.y);
 			break;
 		/*case ENEMY_TYPES::BROWNSHIP:
 			enemies[i] = new Enemy_BrownShip(info.x, info.y);
-			break;*/
-		/*case ENEMY_TYPES::MECH:
+			break;
+		case ENEMY_TYPES::MECH:
 			enemies[i] = new Enemy_Mech(info.x, info.y);
 			break;*/
 		}
