@@ -80,6 +80,7 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleAudio.cpp" />
     <ClInclude Include="ModuleBackground.h" />
     <ClInclude Include="ModuleCollision.h" />
     <ClInclude Include="ModuleEnemies.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="EnemyPegTop.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ModuleAudio.h" />
     <ClCompile Include="ModuleBackground.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />

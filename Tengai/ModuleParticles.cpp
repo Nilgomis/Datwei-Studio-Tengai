@@ -28,7 +28,7 @@ bool ModuleParticles::Start()
 
 
 	// Shooting particles
-	//Sho
+	// Sho
 	shoshot.anim.PushBack({ 108, 46, 32, 3 });
 	shoshot.anim.PushBack({ 150, 46, 32, 4 });
 
@@ -43,7 +43,7 @@ bool ModuleParticles::Start()
 
 	junishot.anim.speed = 0.05f;
 	junishot.speed.x = 10;
-	junishot.life = 3000;
+	junishot.life = 6000;
 
 	return true;
 }

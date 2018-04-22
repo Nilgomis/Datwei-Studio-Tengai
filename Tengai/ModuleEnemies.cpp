@@ -25,7 +25,7 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	demonwheelsprite = App->textures->Load("Assets/Sprites/Enemies/Demon Wheel/SpriteSheetDemonWheel.png");
-	pegtopsprite = App->textures->Load("Assets/Sprites/Enemies/DemponPegTop/DemponPegTop.png");
+	pegtopsprite = App->textures->Load("Assets/Sprites/Enemies/DemponPegTop/DemonPegTop.png");
 	return true;
 }
 

@@ -128,7 +128,7 @@ update_status ModulePlayer2::Update()
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x+10, position.y, COLLIDER_PLAYER_SHOT);
 	}
 
 
@@ -146,11 +146,11 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_temple, (Module*)App->intro);
 
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
+		/*App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
 		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
 		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
+		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);*/
 
 		destroyed = true;
 	}
