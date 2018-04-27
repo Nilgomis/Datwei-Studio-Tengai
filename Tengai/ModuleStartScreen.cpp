@@ -72,12 +72,12 @@ bool ModuleStartScreen::Start()
 	App->player2->Disable();
 	App->scene_temple->Disable();//falta afegir un modul per a la pantalla final
 	//main sprites
-	graphics = App->textures->Load("assets/sprites/UI/StartScreen/button_start.png");
-	graphics2 = App->textures->Load("assets/sprites/UI/StartScreen/background.png");
-	graphics3 = App->textures->Load("assets/sprites/UI/StartScreen/titletext.png");
+	graphics = App->textures->Load("Assets/Sprites/UI/StartScreen/button_start.png");
+	graphics2 = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
+	graphics3 = App->textures->Load("Assets/Sprites/UI/StartScreen/titletext.png");
 
-	//Loading sprite layers-->Cloud waves scrolling in layers
-	background1 = App->textures->Load("assets/sprites/UI/StartScreen/waves.png");
+	//Loading sprite layers-->Cloud waves scroll in layers
+	background1 = App->textures->Load("Assets/Sprites/UI/StartScreen/waves.png");
 
 	//Loading Music
 	/*music = App->audio->LoadMusic("assets/audio/music/01_Gem_of_hope.ogg");

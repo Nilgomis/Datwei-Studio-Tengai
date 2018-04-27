@@ -1,5 +1,10 @@
 #ifndef __ModuleWindow_H__
 #define __ModuleWindow_H__
+#define SCREEN_SIZE 1
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 224
+#define WIN_FULLSCREEN 0
+#define WIN_FULLSCREEN_DESKTOP 1
 
 #include "Module.h"
 
