@@ -1,6 +1,6 @@
 #ifndef __ModuleWindow_H__
 #define __ModuleWindow_H__
-#define SCREEN_SIZE 1
+#define SCREEN_SIZE 5
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 224
 #define WIN_FULLSCREEN 0
