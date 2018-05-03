@@ -25,6 +25,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+	//int SDL_RenderSetLogicalSize(SDL_Renderer* renderer, int w, int h);
 };
 
 #endif //__ModuleRenderer_H__
