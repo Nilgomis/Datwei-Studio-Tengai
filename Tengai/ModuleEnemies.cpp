@@ -8,12 +8,17 @@
 #include "EnemyPegTop.h"
 #include "EnemyDemonWheel.h"
 #include "ModuleSceneTemple.h"
+#include "time.h"
+#include "stdlib.h"
+#include "SDL\include\SDL_timer.h"
 
-//#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 50
 #define DESPAWN_TIME 20
 
 ModuleEnemies::ModuleEnemies()
 {
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		enemies[i] = nullptr;
 }
 
 // Destructor
@@ -25,15 +30,13 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Assets/Sprites/Enemies/spriteEnemies.png");
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		enemies[i] = nullptr;
 	return true;
 }
 
 update_status ModuleEnemies::PreUpdate()
 {
 	// check camera position to decide what to spawn
-	/*for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
@@ -43,8 +46,8 @@ update_status ModuleEnemies::PreUpdate()
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
 			}
 		}
-	}*/
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	}
+	/*for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
@@ -54,10 +57,12 @@ update_status ModuleEnemies::PreUpdate()
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
 			}
 		}
-	}
+	}*/
 
 	return UPDATE_CONTINUE;
 }
+
+
 
 // Called before render is available
 update_status ModuleEnemies::Update()
@@ -74,7 +79,7 @@ update_status ModuleEnemies::Update()
 update_status ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	/*for(uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if(enemies[i] != nullptr)
 		{
@@ -84,6 +89,19 @@ update_status ModuleEnemies::PostUpdate()
 				delete enemies[i];
 				enemies[i] = nullptr;
 				LOG("Despawned enemy: %i" + i);
+			}
+		}
+	}*/
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			{
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+				delete enemies[i];
+				enemies[i] = nullptr;
 			}
 		}
 	}

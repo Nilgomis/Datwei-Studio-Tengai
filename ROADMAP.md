@@ -45,6 +45,7 @@ UI
 escollir player 1
 spawnejar player 2 al conectar mando		1.0 README I ROADMAP
 insertar monedes
+colliders extrems de la pantalla
 
 
 
