@@ -13,23 +13,26 @@ ModulePlayer::ModulePlayer()
 {
 
 	// idle animation 
-	idle.PushBack({ 38, 0, 29, 28 });
-	idle.PushBack({ 75, 0, 29, 28 });
-	idle.PushBack({ 112, 0, 29, 28 });
+	idle.PushBack({ 7, 2, 43, 40 });
+	idle.PushBack({ 67, 3, 42, 40 });
+	idle.PushBack({ 120, 4, 43, 40 });
 
 	idle.speed = 0.2f;
 
 
-	forward.PushBack({ 38, 0, 29, 28 });
-	forward.PushBack({ 75, 0, 29, 28 });
-	forward.PushBack({ 112, 0, 29, 28 });
+	forward.PushBack({ 7, 2, 43, 40 });
+	forward.PushBack({ 67, 3, 42, 40 });
+	forward.PushBack({ 120, 4, 43, 40 });
 	//forward.loop = false;
 	forward.speed = 0.2f;
 
-	backward.PushBack({ 216, 1, 24, 26 });
-	backward.PushBack({ 183, 0, 22, 27 });
-	backward.PushBack({ 149, 0, 24, 27 });
-	backward.loop = false;
+	backward.PushBack({ 5, 49, 41, 41 });
+	backward.PushBack({ 65, 51, 40, 39 });
+	backward.PushBack({ 124, 51, 38, 38 });
+	backward.PushBack({ 177, 51, 36, 39 });
+	backward.PushBack({ 225, 51, 38, 39 });
+	backward.PushBack({ 275, 51, 36, 39 });
+	//backward.loop = false;
 	backward.speed = 0.2f;
 
 }
@@ -45,8 +48,8 @@ bool ModulePlayer::Start()
 	position.y = 50;
 	bool ret = true;
 	destroyed = false;
-	player = App->textures->Load("Assets/Sprites/Characters/Sho/Sho_Spritesheet.png");
-	col = App->collision->AddCollider({ position.x,position.y,29,28 }, COLLIDER_PLAYER, this);
+	player = App->textures->Load("Assets/Sprites/Characters/Tengai/Tengai_Spritesheet.png");
+	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
 	return ret;
 }
 
@@ -86,7 +89,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &backward;
+		current_animation = &forward;
 		if (position.y > 20) {
 			position.y -= speed;
 		}
@@ -96,6 +99,21 @@ update_status ModulePlayer::Update()
 		current_animation = &forward;
 		if (position.y < 192) {
 			position.y += speed;
+		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &backward;
+		if (position.y > 20) {
+			//position.y -= speed;
+		}
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &backward;
+		if (position.y < 192) {
+			//position.y += speed;
 		}
 	}
 	col->SetPos(position.x, position.y);

@@ -389,9 +389,9 @@ update_status ModuleSceneTemple::Update()
 
 	App->render->Blit(diagonal, x, y, &diagonal1, 0.75f);
 
-	if (time > 30) {
+	/*if (time > 30) {
 		App->fade->FadeToBlack(this, (Module*)App->end_screen, 2); 
-	}
+	}*/
 
 
 	return UPDATE_CONTINUE;
