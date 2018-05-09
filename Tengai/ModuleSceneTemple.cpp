@@ -186,7 +186,7 @@ bool ModuleSceneTemple::Start()
 	//App->collision->AddCollider({ 1375, 145, 111, 96 }, COLLIDER_WALL);
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 70, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 70, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 110, 0.25f);
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 150, 0.5f);
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 250, -32, 3);
@@ -217,15 +217,15 @@ bool ModuleSceneTemple::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, -81, 22);
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 22);
 	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, -81, 25);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 25);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 25);
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80,100);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80, 100);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80, 100);
-	//App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80,100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80, 100);
 
-	//frameTime = 0;
-	//t2 = 0;
+	frameTime = 0;
+	t2 = 0;
 	return true;
 }
 
@@ -247,10 +247,10 @@ bool ModuleSceneTemple::CleanUp()
 	return true;
 }
 
-/*float ModuleSceneTemple::Time()
+float ModuleSceneTemple::Time()
 {
 	return timer;
-}*/
+}
 
 // Update: draw background
 update_status ModuleSceneTemple::Update()
@@ -259,7 +259,7 @@ update_status ModuleSceneTemple::Update()
 	//App->render->camera.x += 1 * SCREEN_SIZE;
 
 	//Repeating backgrounds logic
-	/*bgXpos -=0.5f;
+	bgXpos -=0.5f;
 	bgXpos2 -= 0.5f;
 	bgXpos3 -= 0.5f;
 	if (bgXpos <= -256) {
@@ -275,7 +275,7 @@ update_status ModuleSceneTemple::Update()
 	//Increase the timer which serves to spawn enemies
 	frameTime++;
 	timer =frameTime/60.000000000f;
-	LOG("%f, %f", frameTime,timer);*/
+	LOG("%f, %f", frameTime,timer);
 
 	// Draw everything --------------------------------------	
 	int aux = -10, auxtree = -10, aux2 = 810, aux3 = 1775, aux4 = 780, aux5 = 2031, aux6 = 1390, aux7 = 5119, aux8 = 4690, aux9 = 6140, aux10 = 6630, aux11 = 7880;

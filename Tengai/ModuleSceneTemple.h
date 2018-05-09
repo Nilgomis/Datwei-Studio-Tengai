@@ -17,7 +17,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	//float Time();
+	float Time();
 
 public:
 
@@ -48,13 +48,14 @@ public:
 		  alpha_end = 0;
 	float speed = 11;
 	float time = 0;
+	float timer = 0;
 	bool  gmod = false;
 
-	/*float bgXpos = 0;
+	float bgXpos = 0;
 	float bgXpos2 = 256;
 	float bgXpos3 = 512;
 	float frameTime = 0;
-	float t2;*/
+	float t2;
 };
 
 #endif // __MODULESCENETemple_H__
