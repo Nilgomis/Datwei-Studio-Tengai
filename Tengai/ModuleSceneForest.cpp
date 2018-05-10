@@ -183,48 +183,49 @@ bool ModuleSceneForest::Start()
 	App->enemies->Enable();
 
 	// Colliders ---
-	//App->collision->AddCollider({ 0, 224, 3930, 16 }, COLLIDER_WALL);
-	//App->collision->AddCollider({ 1375, 0, 111, 96 }, COLLIDER_WALL);
-	//App->collision->AddCollider({ 1375, 145, 111, 96 }, COLLIDER_WALL);
+	topCollider = App->collision->AddCollider({ 0, 0, 99000, 20 }, COLLIDER_WALL);
+	botCollider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 4, 990000, 16 }, COLLIDER_WALL);
+	leftCollider = App->collision->AddCollider({ 0,0,0,SCREEN_HEIGHT }, COLLIDER_WALL);
+	rightCollider = App->collision->AddCollider({ SCREEN_WIDTH,0, 0,SCREEN_HEIGHT }, COLLIDER_WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 70, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 110, 0.25f);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 150, 0.5f);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 250, -32, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 250, 225, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, -64, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, 257, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, -81, 4);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 4);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 110, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 350, 70, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 350, 150, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 340, 60, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, -32, 7);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, 225, 7);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 335, 110, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 340, 160, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 150, 11);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 110, 12);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 70, 13);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 50, 15);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 80, 16);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 140, 17);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 320, 170, 18);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 250, -32, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 250, 225, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, -64, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 170, 257, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, -81, 22);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 22);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, -81, 25);
-	App->enemies->AddEnemy(ENEMY_TYPES::DEMONWHEEL, 200, 294, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 0.25f);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 150, 0.5f);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, 225, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -64, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 257, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, -81, 4);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, 294, 4);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 350, 70, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 350, 150, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 340, 60, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -32, 7);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 225, 7);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 335, 110, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 340, 160, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 150, 11);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 12);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 13);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 50, 15);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 80, 16);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 140, 17);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 170, 18);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, 225, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -64, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 257, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, -81, 22);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, 294, 22);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, -81, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, 294, 25);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 600, 80,100);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 625, 80, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 600, 80,100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 625, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 640, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 665, 80, 100);
 
 	//frameTime = 0;
 	//t2 = 0;
@@ -257,6 +258,9 @@ float ModuleSceneForest::Time()
 // Update: draw background
 update_status ModuleSceneForest::Update()
 {
+	//Collision update
+	leftCollider->SetPos(App->render->camera.x / SCREEN_SIZE, 0);
+	rightCollider->SetPos((SCREEN_WIDTH + App->render->camera.x / SCREEN_SIZE), 0);
 	// Move camera forward -----------------------------
 	//App->render->camera.x += 1 * SCREEN_SIZE;
 

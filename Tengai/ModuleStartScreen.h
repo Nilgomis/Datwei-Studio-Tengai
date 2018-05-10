@@ -44,6 +44,7 @@ private:
 	SDL_Rect bg6;
 	SDL_Rect bg7;
 
+	Mix_Chunk* start = nullptr;
 	_Mix_Music* music = nullptr;
 
 public:

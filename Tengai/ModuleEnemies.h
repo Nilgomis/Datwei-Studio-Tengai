@@ -2,16 +2,16 @@
 #define __ModuleEnemies_H__
 
 #include "Module.h"
-#include "EnemyDemonWheel.h"
-#include "EnemyPegTop.h"
+#include "EnemyREDSHIP.h"
+#include "EnemyGREENSHIP.h"
 
 #define MAX_ENEMIES 100
 
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	DEMONWHEEL,
-	PEGTOP,
+	REDSHIP,
+	GREENSHIP,
 };
 
 class Enemy;

@@ -90,6 +90,7 @@ update_status ModuleStartScreen::Update()
 {
 	// Switching between scenes
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+		//App->audio->LoadEffect(start, -1);
 		App->fade->FadeToBlack(this, App->scene_temple, 2);
 	}
 

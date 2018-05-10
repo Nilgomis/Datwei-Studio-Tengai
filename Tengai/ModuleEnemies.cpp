@@ -5,8 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
-#include "EnemyPegTop.h"
-#include "EnemyDemonWheel.h"
+#include "EnemyGREENSHIP.h"
+#include "EnemyREDSHIP.h"
 #include "ModuleSceneForest.h"
 
 //#define SPAWN_MARGIN 50
@@ -140,13 +140,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		case ENEMY_TYPES::DEMONWHEEL:
-			enemies[i] = new EnemyDemonWheel(info.x, info.y, info.time);
+		case ENEMY_TYPES::REDSHIP:
+			enemies[i] = new EnemyREDSHIP(info.x, info.y, info.time);
 			LOG("Spawned enemy: %i" + i);
 			break;
 
-			/*case ENEMY_TYPES::PEGTOP:
-			enemies[i] = new EnemyPegTop(info.x, info.y, info.time);
+			/*case ENEMY_TYPES::GREENSHIP:
+			enemies[i] = new EnemyGREENSHIP(info.x, info.y, info.time);
 			break;*/
 
 		}

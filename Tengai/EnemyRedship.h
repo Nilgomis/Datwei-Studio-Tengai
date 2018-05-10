@@ -1,10 +1,10 @@
-#ifndef __ENEMYDEMONWHEEL_H__
-#define __ENEMYDEMONWHEEL_H__
+#ifndef __ENEMYREDSHIP_H__
+#define __ENEMYREDSHIP_H__
 
 #include "Enemy.h"
 #include "Path.h"
 
-class EnemyDemonWheel : public Enemy
+class EnemyREDSHIP : public Enemy
 {
 private:
 	//float wave = -1.0f;
@@ -22,8 +22,8 @@ private:
 
 public:
 
-	EnemyDemonWheel(int x, int y, float time);
-	~EnemyDemonWheel(){};
+	EnemyREDSHIP(int x, int y, float time);
+	~EnemyREDSHIP(){};
 
 	void Move();
 	//void onCollision(Collider* Collider);

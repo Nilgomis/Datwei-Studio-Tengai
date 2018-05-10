@@ -78,8 +78,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyDemonWheel.h" />
-    <ClInclude Include="EnemyPegTop.h" />
+    <ClInclude Include="EnemyRedship.h" />
+    <ClInclude Include="EnemyGreenship.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -104,8 +104,8 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyDemonWheel.cpp" />
-    <ClCompile Include="EnemyPegTop.cpp" />
+    <ClCompile Include="EnemyRedship.cpp" />
+    <ClCompile Include="EnemyGreenship.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />

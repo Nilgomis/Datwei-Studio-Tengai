@@ -20,7 +20,10 @@ public:
 	float Time();
 
 public:
-
+	Collider* leftCollider = nullptr;
+	Collider* rightCollider = nullptr;
+	Collider* topCollider = nullptr;
+	Collider* botCollider = nullptr;
 	//SDL_Texture* background = nullptr;
 	SDL_Texture* graphics	= nullptr;
 	SDL_Texture* graphics1	= nullptr;

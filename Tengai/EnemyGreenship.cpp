@@ -1,9 +1,9 @@
 #include "Application.h"
-#include "EnemyPegTop.h"
+#include "EnemyGREENSHIP.h"
 #include "ModuleCollision.h"
 #include "Globals.h"
 
-EnemyPegTop::EnemyPegTop(int x, int y, float time) : Enemy(x, y, time)
+EnemyGREENSHIP::EnemyGREENSHIP(int x, int y, float time) : Enemy(x, y, time)
 {
 	fly.PushBack({ 39, 10 , 42, 48 });
 	fly.PushBack({ 83, 10, 42, 48 });
@@ -13,12 +13,12 @@ EnemyPegTop::EnemyPegTop(int x, int y, float time) : Enemy(x, y, time)
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 42, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY_PEGTOP, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 42, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY_GREENSHIP, (Module*)App->enemies);
 
 	original_y = y;
 }
 
-void EnemyPegTop::Move()
+void EnemyGREENSHIP::Move()
 {
 	if (going_up)
 	{

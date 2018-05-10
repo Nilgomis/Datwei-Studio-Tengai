@@ -1,10 +1,10 @@
 #include "Application.h"
-#include "EnemyDemonWheel.h"
+#include "EnemyREDSHIP.h"
 #include "ModuleCollision.h"
 #include "Globals.h"
 #include "ModuleParticles.h"
 
-EnemyDemonWheel::EnemyDemonWheel(int x, int y, float time) : Enemy(x, y,time)
+EnemyREDSHIP::EnemyREDSHIP(int x, int y, float time) : Enemy(x, y,time)
 {
 	flyforward.PushBack({ 0, 96, 32, 32 });
 	flyforward.PushBack({ 32, 96, 32, 32 });
@@ -30,13 +30,13 @@ EnemyDemonWheel::EnemyDemonWheel(int x, int y, float time) : Enemy(x, y,time)
 
 	animation = &flyforward;
 
-	collider = App->collision->AddCollider({0, 0, 32, 32}, COLLIDER_TYPE::COLLIDER_ENEMY_WHEEL, (Module*)App->enemies);
+	collider = App->collision->AddCollider({0, 0, 32, 32}, COLLIDER_TYPE::COLLIDER_ENEMY_REDSHIP, (Module*)App->enemies);
 
 	originalPosition = { x,y };
 	spawnTime = time;
 }
 
-void EnemyDemonWheel::Move()
+void EnemyREDSHIP::Move()
 {
 	/*if(going_up)
 	{
