@@ -88,30 +88,30 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.x < 270) {
+		//if (position.x < 270) {
 			position.x += speed;
-		}
+		//}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &backward;
-		if (position.x > 0) {
+		//if (position.x > 0) {
 			position.x -= speed;
-		}
+		//}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &backward;
-		if (position.y > 20) {
+		//if (position.y > 20) {
 			position.y -= speed;
-		}
+		//}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
-		if (position.y < 192) {
+		//if (position.y < 192) {
 			position.y += speed;
-		}
+		//}
 	}
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
