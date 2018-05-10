@@ -13,6 +13,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleEndScreen.h"
+#include "ModuleAudio.h"
 
 Application::Application()
 {
@@ -21,6 +22,7 @@ Application::Application()
 	modules[i++] = render			= new ModuleRender();
 	modules[i++] = input			= new ModuleInput();
 	modules[i++] = textures			= new ModuleTextures();
+	modules[i++] = audio			= new ModuleAudio();
 	modules[i++] = intro			= new ModuleStartScreen();
 	modules[i++] = scene_temple		= new ModuleSceneForest();
 	modules[i++] = enemies			= new ModuleEnemies();
@@ -29,7 +31,7 @@ Application::Application()
 	modules[i++] = particles		= new ModuleParticles();
 	modules[i++] = collision		= new ModuleCollision();
 	modules[i++] = fade				= new ModuleFadeToBlack();
-	modules[i++] = end_screen = new ModuleEndScreen();
+	modules[i++] = end_screen		= new ModuleEndScreen();
 	modules[i++] = background		= new ModuleBackground();
 }	
 

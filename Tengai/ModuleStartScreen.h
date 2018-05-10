@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 
@@ -42,6 +43,8 @@ private:
 	SDL_Rect bg5;
 	SDL_Rect bg6;
 	SDL_Rect bg7;
+
+	_Mix_Music* music = nullptr;
 
 public:
 

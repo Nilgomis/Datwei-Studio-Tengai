@@ -41,21 +41,21 @@ public:
 		  y = -480, 
 		  ygrass = 185;
 	bool  fade = true;
-	float alpha_mid = 0, 
-		  alpha_mid1 = 255, 
+	float alpha_fade1 = 0, 
+		  alpha_fade2 = 255, 
 		  alpha_graph2 = 255, 
 		  alpha_graph1 = 0, 
 		  alpha_end = 0;
 	float speed = 11;
 	float time = 0;
 	float timer = 0;
-	bool  gmod = false;
+	
 
-	float bgXpos = 0;
+	/*float bgXpos = 0;
 	float bgXpos2 = 256;
 	float bgXpos3 = 512;
 	float frameTime = 0;
-	float t2;
+	float t2;*/
 };
 
 #endif // __MODULESceneForest_H__

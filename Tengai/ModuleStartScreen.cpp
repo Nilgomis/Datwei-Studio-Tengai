@@ -8,6 +8,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleSceneForest.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
 
 
 // Load assets
@@ -80,8 +81,8 @@ bool ModuleStartScreen::Start()
 	background1 = App->textures->Load("Assets/Sprites/UI/StartScreen/waves.png");
 
 	//Loading Music
-	/*music = App->audio->LoadMusic("assets/audio/music/01_Gem_of_hope.ogg");
-	Mix_PlayMusic(music, -1);*/
+	music = App->audio->LoadMusic("Assets/Audio/OGG/Music/01_Gem_of_hope.ogg");
+	Mix_PlayMusic(music, -1);
 	return true;
 }
 
@@ -197,8 +198,8 @@ bool ModuleStartScreen::CleanUp()
 	graphics = nullptr;
 
 	//Unloading Audio
-	/*App->audio->UnloadMusic(music);
+	App->audio->UnloadMusic(music);
 	music = nullptr;
-	*/
+	
 	return true;
 }

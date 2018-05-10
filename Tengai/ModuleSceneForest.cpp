@@ -11,6 +11,8 @@
 #include "ModuleFadeToBlack.h"
 //#include "ModuleBackground.h"
 
+#include "SDL\include\SDL_render.h"
+
 
 ModuleSceneForest::ModuleSceneForest()
 {
@@ -166,8 +168,8 @@ bool ModuleSceneForest::Start()
 	graphics2 = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fade_sprite.png");
 	end = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fase2_sprite.png");
 	diagonal = App->textures->Load("Assets/Sprites/Maps/Forest/Background/diagonal_sprite.png");
-	//fade1 = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fade_sprite.png");
-	//fade2 = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fade2_prite.png");
+	fade1 = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fade_sprite.png");
+	fade2 = App->textures->Load("Assets/Sprites/Maps/Forest/Background/fade2_prite.png");
 	/*bg.x = 0;
 	bg.y = 0;
 	bg.w = 256;
@@ -224,8 +226,8 @@ bool ModuleSceneForest::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 640, 80, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::PEGTOP, 665, 80, 100);
 
-	frameTime = 0;
-	t2 = 0;
+	//frameTime = 0;
+	//t2 = 0;
 	return true;
 }
 
@@ -259,7 +261,7 @@ update_status ModuleSceneForest::Update()
 	//App->render->camera.x += 1 * SCREEN_SIZE;
 
 	//Repeating backgrounds logic
-	bgXpos -=0.5f;
+	/*bgXpos -=0.5f;
 	bgXpos2 -= 0.5f;
 	bgXpos3 -= 0.5f;
 	if (bgXpos <= -256) {
@@ -270,12 +272,12 @@ update_status ModuleSceneForest::Update()
 	}
 	if (bgXpos3 <= -256) {
 		bgXpos3 = 512;
-	}
+	}*/
 
 	//Increase the timer which serves to spawn enemies
-	frameTime++;
+	/*frameTime++;
 	timer =frameTime/60.000000000f;
-	LOG("%f, %f", frameTime,timer);
+	LOG("%f, %f", frameTime,timer);*/
 
 	// Draw everything --------------------------------------	
 	int aux = -10, auxtree = -10, aux2 = 810, aux3 = 1775, aux4 = 780, aux5 = 2031, aux6 = 1390, aux7 = 5119, aux8 = 4690, aux9 = 6140, aux10 = 6630, aux11 = 7880;
@@ -299,14 +301,14 @@ update_status ModuleSceneForest::Update()
 	App->render->Blit(fade1, 0, 0, &midfade, 0.00f);
 
 	if (App->render->camera.x > 5300 && fade == true) {
-		if (alpha_mid >= SDL_ALPHA_OPAQUE) {
-			alpha_mid = 0;
+		if (alpha_fade1 >= SDL_ALPHA_OPAQUE) {
+			alpha_fade1 = 0;
 			alpha_graph2 = 0;
 			alpha_graph1 = 255;
 			fade = false;
 		}
 		else {
-			alpha_mid += 0.10*speed;
+			alpha_fade1 += 0.10*speed;
 		}
 	}
 
@@ -316,12 +318,12 @@ update_status ModuleSceneForest::Update()
 	}
 
 	if (App->render->camera.x > 5300 && fade == false) {
-		if (alpha_mid1 > SDL_ALPHA_TRANSPARENT) {
+		if (alpha_fade2 > SDL_ALPHA_TRANSPARENT) {
 			App->render->Blit(fade2, 0, 0, &midfade, 0.00f);
-			alpha_mid1 -= 0.10*speed;
+			alpha_fade2 -= 0.10*speed;
 		}
 		else {
-			alpha_mid = 0;
+			alpha_fade1 = 0;
 		}
 
 	}
@@ -389,9 +391,65 @@ update_status ModuleSceneForest::Update()
 
 	App->render->Blit(diagonal, x, y, &diagonal1, 0.75f);
 
-	/*if (time > 30) {
+	// background speed
+
+
+	if (App->render->camera.x < 1700) {
+		speed = 9;
+	}
+	else if (App->render->camera.x > 1700 && App->render->camera.x < 5300) {
+		speed = 6;
+	}
+	else if (App->render->camera.x > 5300 && App->render->camera.x < 8000) {
+		speed = 12;
+	}
+	else if (App->render->camera.x > 8000 && App->render->camera.x < 10000) {
+		speed = 0.03;
+	}
+	else if (App->render->camera.x > 10000 && App->render->camera.x < 13100) {
+		speed = 3;
+	}
+	else if (App->render->camera.x > 13100 && App->render->camera.x < 27340) {
+		if (time < 270)
+		{
+			speed = 0;
+			time++;
+		}
+		else
+		{
+			speed = 6;
+		}
+
+	}
+	else if (App->render->camera.x > 27340 && App->render->camera.x < 30205) {
+		x = 0.33*speed;
+		y += 0.21*speed;
+		speed = 6;
+	}
+	else if (App->render->camera.x > 30205) {
+		speed = 6;
+	}
+
+	if (App->render->camera.x > 26000 && App->render->camera.x < 27000) {
+		ygrass += 0.15*speed;
+	}
+
+	// alpha textures
+	/*SDL_SetTextureAlphaMod(graphics2, alpha_graph2);
+	SDL_SetTextureAlphaMod(graphics1, alpha_graph1);*/
+	SDL_SetTextureAlphaMod(fade1, alpha_fade1);
+	SDL_SetTextureAlphaMod(fade2, alpha_fade2);
+	SDL_SetTextureAlphaMod(end, alpha_end);
+
+	// background movement
+	App->player2->position.x += speed / SCREEN_SIZE / 3;
+	App->player->position.x += speed / SCREEN_SIZE / 3;
+	App->render->camera.x += speed / 3;
+
+
+	if (time > 30) {
 		App->fade->FadeToBlack(this, (Module*)App->end_screen, 2); 
-	}*/
+	}
 
 
 	return UPDATE_CONTINUE;

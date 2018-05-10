@@ -1,4 +1,4 @@
-/*#include "Globals.h"
+#include "Globals.h"
 #include "Application.h"
 #include "ModuleAudio.h"
 
@@ -172,4 +172,4 @@ bool ModuleAudio::UnloadEffect(Mix_Chunk* _fx) {
 	}
 
 	return ret;
-}*/
+}
