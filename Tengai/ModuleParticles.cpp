@@ -35,15 +35,18 @@ bool ModuleParticles::Start()
 
 	// Shooting particle
 
-	shoshot.anim.PushBack({ 149, 46, 32, 3 });
+	tengaishot.anim.PushBack({ 390, 287, 31, 15 });
+	tengaishot.anim.PushBack({ 433, 289, 31, 12 });
 
-	//shoshot.anim.speed = 0.25f;
-	shoshot.speed.x = 10;
-	shoshot.life = 1000;
+	tengaishot.anim.speed = 0.2f;
+	tengaishot.speed.x = 10;
+	tengaishot.life = 1000;
 
 	junishot.anim.PushBack({ 11, 117, 31, 9 });
+	junishot.anim.PushBack({ 11, 134, 31, 9 });
+	junishot.anim.PushBack({ 50, 134, 31, 9 });
 
-	//junishot.anim.speed = 0.25f;
+	junishot.anim.speed = 0.2f;
 	junishot.speed.x = 10;
 	junishot.life = 1000;
 

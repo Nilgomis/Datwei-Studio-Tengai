@@ -52,7 +52,7 @@ private:
 public:
 
 	Particle explosion;
-	Particle shoshot;
+	Particle tengaishot;
 	Particle junishot;
 	Particle enemyshot;
 };
