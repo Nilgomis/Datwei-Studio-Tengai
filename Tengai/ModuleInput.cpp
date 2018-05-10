@@ -26,8 +26,18 @@ bool ModuleInput::Init()
 		ret = false;
 	}
 
+	// controller
+	LOG("Init controller");
+	SDL_Init(0);
+
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("Gamecontroller could not initialize! SDL_Error: %s\n", SDL_GetError());
+	}
+
 	return ret;
 }
+
 
 // Calling every draw update
 update_status ModuleInput::PreUpdate()
@@ -62,6 +72,34 @@ update_status ModuleInput::PreUpdate()
 
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
+
+	// gamepads
+
+	if (gamepad == nullptr || gamepad2 == nullptr) {
+
+		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+
+			if (SDL_IsGameController(i)) {
+
+				// Controller1
+				gamepad = SDL_GameControllerOpen(i);
+
+				if (gamepad != nullptr) {
+
+					key1 = SDL_GameControllerMapping(gamepad);
+				}
+
+				// Controller2
+				gamepad2 = SDL_GameControllerOpen(i);
+
+				if (gamepad2 != nullptr) {
+
+					key2 = SDL_GameControllerMapping(gamepad2);
+				}
+			}
+		}
+	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }

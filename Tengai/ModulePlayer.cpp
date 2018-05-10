@@ -7,6 +7,9 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "SDL\include\SDL_gamecontroller.h"
+#include "SDL\include\SDL.h"
+
 
 
 ModulePlayer::ModulePlayer()
@@ -123,6 +126,18 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
 		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y+10, COLLIDER_PLAYER_SHOT);
+	}
+
+	// Shooting Gamepad
+	if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) && A == false)
+	{
+		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
+		A = true;
+	}
+
+	if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) == false)
+	{
+		A = false;
 	}
 
 	// Draw everything

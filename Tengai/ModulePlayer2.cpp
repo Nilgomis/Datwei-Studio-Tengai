@@ -124,7 +124,6 @@ update_status ModulePlayer2::Update()
 	}
 	col->SetPos(position.x, position.y);
 
-
 	// Draw everything
 
 	if (destroyed == false)
