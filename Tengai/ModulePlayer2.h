@@ -32,6 +32,9 @@ public:
 	bool destroyed = false;
 	float cooldown = 0.1f;
 
+	bool A2 = false;
+	bool B2 = false;
+
 };
 
 #endif

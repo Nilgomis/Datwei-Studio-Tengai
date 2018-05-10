@@ -124,6 +124,18 @@ update_status ModulePlayer2::Update()
 	}
 	col->SetPos(position.x, position.y);
 
+	// SHooting gamepad
+	if (SDL_GameControllerGetButton(App->input->gamepad2, SDL_CONTROLLER_BUTTON_A) && A2 == false)
+	{
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
+		A2 = true;
+	}
+
+	if (SDL_GameControllerGetButton(App->input->gamepad2, SDL_CONTROLLER_BUTTON_A) == false)
+	{
+		A2 = false;
+	}
+
 	// Draw everything
 
 	if (destroyed == false)
