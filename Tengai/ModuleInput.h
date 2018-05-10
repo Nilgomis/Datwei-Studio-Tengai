@@ -22,7 +22,7 @@ enum KEY_STATE
 class ModuleInput : public Module
 {
 public:
-	
+
 	ModuleInput();
 	~ModuleInput();
 

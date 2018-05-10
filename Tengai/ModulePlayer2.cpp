@@ -36,16 +36,12 @@ ModulePlayer2::ModulePlayer2()
 	idle.PushBack({ 36, 8, 30, 28 });
 	idle.PushBack({ 73, 8, 30, 28 });
 	idle.PushBack({ 110, 9, 30, 28 });
-
 	idle.speed = 0.2f;
-
-
 	forward.PushBack({ 36, 8, 30, 28 });
 	forward.PushBack({ 73, 8, 30, 28 });
 	forward.PushBack({ 110, 9, 30, 28 });
 	forward.loop = false;
 	forward.speed = 0.2f;
-
 	backward.PushBack({ 181, 8, 23, 28 });
 	backward.PushBack({ 147, 8, 25, 28 });
 	backward.loop = false;
@@ -120,7 +116,7 @@ update_status ModulePlayer2::Update()
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y+10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 	col->SetPos(position.x, position.y);
 

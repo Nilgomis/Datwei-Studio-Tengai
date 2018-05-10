@@ -125,7 +125,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
-		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y+10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 
 	// Shooting Gamepad
