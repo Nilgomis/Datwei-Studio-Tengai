@@ -1,5 +1,5 @@
-#ifndef __MODULESCENETemple_H__
-#define __MODULESCENETemple_H__
+#ifndef __MODULESceneForest_H__
+#define __MODULESceneForest_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -8,11 +8,11 @@
 
 struct SDL_Texture;
 
-class ModuleSceneTemple : public Module
+class ModuleSceneForest : public Module
 {
 public:
-	ModuleSceneTemple();
-	~ModuleSceneTemple();
+	ModuleSceneForest();
+	~ModuleSceneForest();
 
 	bool Start();
 	update_status Update();
@@ -58,4 +58,4 @@ public:
 	float t2;
 };
 
-#endif // __MODULESCENETemple_H__
+#endif // __MODULESceneForest_H__

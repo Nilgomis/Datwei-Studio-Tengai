@@ -3,7 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleSceneTemple.h"
+#include "ModuleSceneForest.h"
 #include "ModuleStartScreen.h"
 #include "ModuleBackground.h"
 #include "ModuleCollision.h"
@@ -22,7 +22,7 @@ Application::Application()
 	modules[i++] = input			= new ModuleInput();
 	modules[i++] = textures			= new ModuleTextures();
 	modules[i++] = intro			= new ModuleStartScreen();
-	modules[i++] = scene_temple		= new ModuleSceneTemple();
+	modules[i++] = scene_temple		= new ModuleSceneForest();
 	modules[i++] = enemies			= new ModuleEnemies();
 	modules[i++] = player			= new ModulePlayer();
 	modules[i++] = player2			= new ModulePlayer2();

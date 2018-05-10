@@ -7,12 +7,12 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
-#include "ModuleSceneTemple.h"
+#include "ModuleSceneForest.h"
 #include "ModuleFadeToBlack.h"
 //#include "ModuleBackground.h"
 
 
-ModuleSceneTemple::ModuleSceneTemple()
+ModuleSceneForest::ModuleSceneForest()
 {
 	// 1st fade
 	midfade.x = 0;
@@ -153,11 +153,11 @@ ModuleSceneTemple::ModuleSceneTemple()
 }
 
 
-ModuleSceneTemple::~ModuleSceneTemple()
+ModuleSceneForest::~ModuleSceneForest()
 {}
 
 // Load assets
-bool ModuleSceneTemple::Start()
+bool ModuleSceneForest::Start()
 {
 	LOG("Loading Forest scene");
 
@@ -230,7 +230,7 @@ bool ModuleSceneTemple::Start()
 }
 
 // Load assets
-bool ModuleSceneTemple::CleanUp()
+bool ModuleSceneForest::CleanUp()
 {
 	LOG("Unloading Temple scene");
 
@@ -247,13 +247,13 @@ bool ModuleSceneTemple::CleanUp()
 	return true;
 }
 
-float ModuleSceneTemple::Time()
+float ModuleSceneForest::Time()
 {
 	return timer;
 }
 
 // Update: draw background
-update_status ModuleSceneTemple::Update()
+update_status ModuleSceneForest::Update()
 {
 	// Move camera forward -----------------------------
 	//App->render->camera.x += 1 * SCREEN_SIZE;

@@ -10,7 +10,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class ModuleParticles;
-class ModuleSceneTemple;
+class ModuleSceneForest;
 class ModuleStartScreen;
 class ModuleBackground;
 class ModulePlayer;
@@ -30,7 +30,7 @@ public:
 	ModuleRender* render;
 	ModuleInput* input;
 	ModuleTextures* textures;
-	ModuleSceneTemple* scene_temple;
+	ModuleSceneForest* scene_temple;
 	ModuleStartScreen* intro;
 	ModuleBackground* background;
 	ModuleCollision* collision;

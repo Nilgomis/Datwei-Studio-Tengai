@@ -7,7 +7,7 @@
 #include "Enemy.h"
 #include "EnemyPegTop.h"
 #include "EnemyDemonWheel.h"
-#include "ModuleSceneTemple.h"
+#include "ModuleSceneForest.h"
 
 //#define SPAWN_MARGIN 50
 #define DESPAWN_TIME 20
