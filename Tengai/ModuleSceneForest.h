@@ -56,9 +56,9 @@ public:
 
 	/*float bgXpos = 0;
 	float bgXpos2 = 256;
-	float bgXpos3 = 512;
+	float bgXpos3 = 512;*/
 	float frameTime = 0;
-	float t2;*/
+	float t2;
 };
 
 #endif // __MODULESceneForest_H__

@@ -5,15 +5,15 @@
 
 EnemyGREENSHIP::EnemyGREENSHIP(int x, int y, float time) : Enemy(x, y, time)
 {
-	fly.PushBack({ 39, 10 , 42, 48 });
-	fly.PushBack({ 83, 10, 42, 48 });
-	fly.PushBack({ 128, 10, 42, 48 });
-	fly.PushBack({ 172, 10, 42, 48 });
+	fly.PushBack({ 14, 15 , 30, 30 });
+	fly.PushBack({ 61, 16, 30, 30 });
+	fly.PushBack({ 107, 16, 30, 30 });
+	fly.PushBack({ 152, 16, 30, 30 });
 	fly.speed = 0.2f;
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 42, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY_GREENSHIP, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY_GREENSHIP, (Module*)App->enemies);
 
 	original_y = y;
 }

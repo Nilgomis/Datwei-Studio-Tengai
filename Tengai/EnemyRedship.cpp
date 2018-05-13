@@ -6,31 +6,23 @@
 
 EnemyREDSHIP::EnemyREDSHIP(int x, int y, float time) : Enemy(x, y,time)
 {
-	flyforward.PushBack({ 0, 96, 32, 32 });
-	flyforward.PushBack({ 32, 96, 32, 32 });
-	flyforward.PushBack({ 64, 96, 32, 32 });
-	flyforward.PushBack({ 96, 96, 32, 32 });
-	flyforward.PushBack({ 0, 96, 32, 32 });
-	flyforward.PushBack({ 32, 96, 32, 32 });
-	flyforward.PushBack({ 64, 96, 32, 32 });
-	flyforward.PushBack({ 96, 96, 32, 32 });
-	flyforward.PushBack({ 0, 96, 32, 32 });
-	flyforward.PushBack({ 32, 96, 32, 32 });
-	flyforward.PushBack({ 64, 96, 32, 32 });
-	flyforward.PushBack({ 96, 96, 32, 32 });
+	flyforward.PushBack({ 16, 60 , 30, 30 });
+	flyforward.PushBack({ 62, 60, 30, 30 });
+	flyforward.PushBack({ 110, 60, 30, 30 });
+	flyforward.PushBack({ 155, 60, 30, 30 });
 	//attack
-	flyforward.PushBack({ 0, 128, 32, 32 });
+	/*flyforward.PushBack({ 0, 128, 32, 32 });
 	flyforward.PushBack({ 32, 128, 32, 32 });
 	flyforward.PushBack({ 64, 128, 32, 32 });
 	flyforward.PushBack({ 96, 128, 32, 32 });
 	flyforward.PushBack({ 0, 160, 32, 32 });
-	flyforward.PushBack({ 32, 160, 32, 32 });
+	flyforward.PushBack({ 32, 160, 32, 32 });*/
 
 	flyforward.speed = 0.2f;
 
 	animation = &flyforward;
 
-	collider = App->collision->AddCollider({0, 0, 32, 32}, COLLIDER_TYPE::COLLIDER_ENEMY_REDSHIP, (Module*)App->enemies);
+	collider = App->collision->AddCollider({0, 0, 30, 30}, COLLIDER_TYPE::COLLIDER_ENEMY_REDSHIP, (Module*)App->enemies);
 
 	originalPosition = { x,y };
 	spawnTime = time;

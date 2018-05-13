@@ -189,7 +189,7 @@ bool ModuleSceneForest::Start()
 	rightCollider = App->collision->AddCollider({ SCREEN_WIDTH,0, 0,SCREEN_HEIGHT }, COLLIDER_WALL);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 0);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 0.25f);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 150, 0.5f);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 3);
@@ -225,10 +225,15 @@ bool ModuleSceneForest::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 600, 80,100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 625, 80, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 640, 80, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 665, 80, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 665, 80, 100);*/
 
-	//frameTime = 0;
-	//t2 = 0;
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 80, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 100, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 120, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 140, 0);
+
+	frameTime = 0;
+	t2 = 0;
 	return true;
 }
 
@@ -279,9 +284,9 @@ update_status ModuleSceneForest::Update()
 	}*/
 
 	//Increase the timer which serves to spawn enemies
-	/*frameTime++;
+	frameTime++;
 	timer =frameTime/60.000000000f;
-	LOG("%f, %f", frameTime,timer);*/
+	LOG("%f, %f", frameTime,timer);
 
 	// Draw everything --------------------------------------	
 	int aux = -10, auxtree = -10, aux2 = 810, aux3 = 1775, aux4 = 780, aux5 = 2031, aux6 = 1390, aux7 = 5119, aux8 = 4690, aux9 = 6140, aux10 = 6630, aux11 = 7880;
