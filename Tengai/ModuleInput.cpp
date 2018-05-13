@@ -33,8 +33,22 @@ bool ModuleInput::Init()
 	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) < 0)
 	{
 		LOG("Gamecontroller could not initialize! SDL_Error: %s\n", SDL_GetError());
+		ret = false;
 	}
 
+	if (SDL_NumJoysticks() > 0)
+	{
+		gamepad = SDL_GameControllerOpen(0);
+		gamepad2 = SDL_GameControllerOpen(1);
+		if (gamepad == NULL)
+		{
+			LOG("Unable to open controller 1 SDL_Error: %s\n", SDL_GetError());
+		}
+		if (gamepad2 == NULL)
+		{
+			LOG("Unable to open controller 2 SDL_Error: %s\n", SDL_GetError());
+		}
+	}
 	return ret;
 }
 
@@ -73,34 +87,6 @@ update_status ModuleInput::PreUpdate()
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	// gamepads
-
-	if (gamepad == nullptr || gamepad2 == nullptr) {
-
-		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-
-			if (SDL_IsGameController(i)) {
-
-				// Controller1
-				gamepad = SDL_GameControllerOpen(i);
-
-				if (gamepad != nullptr) {
-
-					key1 = SDL_GameControllerMapping(gamepad);
-				}
-
-				// Controller2
-				gamepad2 = SDL_GameControllerOpen(i);
-
-				if (gamepad2 != nullptr) {
-
-					key2 = SDL_GameControllerMapping(gamepad2);
-				}
-			}
-		}
-	}
-
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -109,5 +95,10 @@ bool ModuleInput::CleanUp()
 {
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
+	SDL_GameControllerClose(gamepad);
+	gamepad = NULL;
+	SDL_GameControllerClose(gamepad2);
+	gamepad2 = NULL;
+	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
 	return true;
 }

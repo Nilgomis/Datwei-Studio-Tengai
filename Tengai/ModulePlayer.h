@@ -32,6 +32,8 @@ public:
 	Collider* col;
 	bool shooting;
 	bool destroyed = false;
+	bool death = false;
+	bool spawn = true;
 	float cooldown = 0.1f;
 	Mix_Chunk* attack = nullptr;
 

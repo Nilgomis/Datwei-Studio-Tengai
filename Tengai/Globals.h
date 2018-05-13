@@ -31,5 +31,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
+#define CONTROLLER_DEAD_ZONE 5000
 
 #endif // __GLOBALS_H__

@@ -19,6 +19,15 @@ enum KEY_STATE
 	KEY_UP
 };
 
+enum BUTTON_STATE
+{
+	BUTTON_IDLE = 0,
+	BUTTON_UP, 
+	BUTTON_DOWN,
+	BUTTON_REPEAT,
+	
+};
+
 class ModuleInput : public Module
 {
 public:
@@ -32,11 +41,9 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	bool controller_state[MAX_BUTTONS];
-	SDL_GameController* gamepad = { nullptr };
-	SDL_GameController* gamepad2 = { nullptr };
-	char *key1;		//gamepads assigned here
-	char *key2;
+	BUTTON_STATE button[MAX_BUTTONS];
+	SDL_GameController* gamepad;// = { nullptr };
+	SDL_GameController* gamepad2;// = { nullptr };
 
 
 };
