@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -29,8 +30,10 @@ public:
 	Animation backward;
 	iPoint position;
 	Collider* col;
+	bool shooting;
 	bool destroyed = false;
 	float cooldown = 0.1f;
+	Mix_Chunk* attack = nullptr;
 
 	bool A = false;
 	bool B = false;

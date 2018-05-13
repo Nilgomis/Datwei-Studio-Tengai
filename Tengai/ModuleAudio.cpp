@@ -44,9 +44,9 @@ bool ModuleAudio::Init()
 		if (Musics[i] != nullptr) {
 			Mix_PlayMusic(Musics[0], 1);
 		}
-		//if (Effect[i] != nullptr) {
-			//Mix_PlayChannel(-1, sfx[0], 0);
-		//}
+		if (Effect[i] != nullptr) {
+			Mix_PlayChannel(-1, Effect[0], 0);
+		}
 	}
 
 	return ret;

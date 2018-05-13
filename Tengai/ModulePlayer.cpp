@@ -7,6 +7,8 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
+#include "SDL_mixer\include\SDL_mixer.h"
 #include "SDL\include\SDL_gamecontroller.h"
 #include "SDL\include\SDL.h"
 
@@ -47,13 +49,15 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
-	position.x = 25;
+	position.x = 15;
 	position.y = 50;
-	bool ret = true;
 	destroyed = false;
 	player = App->textures->Load("Assets/Sprites/Characters/Tengai/Tengai_Spritesheet.png");
 	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
-	return ret;
+	attack = App->audio->LoadEffect("Assets/Audio/OGG/Effects/Tengai/basic-attack.ogg");
+
+	bool shooting = false;
+	return true;
 }
 
 // Unload assets
@@ -125,6 +129,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
+		Mix_PlayChannel(-1, attack, 0);
 		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 

@@ -7,6 +7,11 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer2.h"
+#include "ModuleAudio.h"
+#include "SDL_mixer\include\SDL_mixer.h"
+#include "SDL\include\SDL_gamecontroller.h"
+#include "SDL\include\SDL.h"
+
 
 
 ModulePlayer2::ModulePlayer2()
@@ -62,6 +67,9 @@ bool ModulePlayer2::Start()
 	destroyed = false;
 	player2 = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
 	col = App->collision->AddCollider({ position.x,position.y,30,28 }, COLLIDER_PLAYER, this);
+	attack = App->audio->LoadEffect("Assets/Audio/OGG/Effects/Junis/basic-attack.ogg");
+	
+	bool shooting = false;
 	return ret;
 }
 
@@ -116,6 +124,7 @@ update_status ModulePlayer2::Update()
 	// Shooting
 	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
 	{
+		Mix_PlayChannel(-1, attack, 0);
 		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 	col->SetPos(position.x, position.y);

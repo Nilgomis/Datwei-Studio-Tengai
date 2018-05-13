@@ -4,8 +4,8 @@
 #include "Module.h"
 #include "Globals.h"
 
-#define MAX_MUSICS 50
-#define MAX_FX 50
+#define MAX_MUSICS 300
+#define MAX_FX 300
 
 struct _Mix_Music;
 struct Mix_Chunk;
