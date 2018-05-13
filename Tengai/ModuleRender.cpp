@@ -7,7 +7,8 @@
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = camera.y = 0;
+	camera.x = 0;
+	camera.y = 0;
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
 }
@@ -29,6 +30,7 @@ bool ModuleRender::Init()
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	if (renderer == NULL)
 	{
@@ -63,7 +65,7 @@ update_status ModuleRender::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		camera.x += speed;
 	*/
-	SDL_RenderSetLogicalSize(App->render->renderer, 320, 324);
+//	SDL_RenderSetLogicalSize(App->render->renderer, 320, 324);
 	return update_status::UPDATE_CONTINUE;
 }
 
