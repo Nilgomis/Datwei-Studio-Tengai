@@ -189,31 +189,31 @@ bool ModuleSceneForest::Start()
 	rightCollider = App->collision->AddCollider({ SCREEN_WIDTH,0, 0,SCREEN_HEIGHT }, COLLIDER_WALL);
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 0.25f);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 150, 0.5f);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, 225, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -64, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 257, 3);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, -81, 4);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 200, 294, 4);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 350, 70, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 350, 150, 6);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 340, 60, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -32, 7);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 225, 7);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 335, 110, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 340, 160, 8);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 150, 11);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 110, 12);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 13);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 50, 15);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 80, 16);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 140, 17);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 170, 18);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 320, 70, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 400, 110, 0.25f);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 500, 150, 0.5f);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1000, -32, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1200, 225, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1200, -64, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1200, 257, 3);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1400, -81, 4);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1400, 294, 4);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1700, 110, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1700, 70, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1700, 150, 6);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1720, 60, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1800, -32, 7);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1800, 225, 7);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1850, 110, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 1850, 160, 8);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2200, 150, 11);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2200, 110, 12);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2200, 70, 13);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2500, 50, 15);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2500, 80, 16);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2500, 140, 17);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 2500, 170, 18);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, -32, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 250, 225, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, -64, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDSHIP, 170, 257, 20);
@@ -225,12 +225,12 @@ bool ModuleSceneForest::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 600, 80,100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 625, 80, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 640, 80, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 665, 80, 100);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 665, 80, 100);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 80, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 100, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 120, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 140, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 140, 0);*/
 
 	frameTime = 0;
 	t2 = 0;
