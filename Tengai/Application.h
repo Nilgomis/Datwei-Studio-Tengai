@@ -32,7 +32,7 @@ public:
 	ModuleInput* input;
 	ModuleTextures* textures;
 	ModuleAudio* audio;
-	ModuleSceneForest* scene_temple;
+	ModuleSceneForest* scene_forest;
 	ModuleStartScreen* intro;
 	ModuleBackground* background;
 	ModuleCollision* collision;

@@ -47,10 +47,10 @@ bool ModuleInput::Init()
 		{
 			gamepad[i] = SDL_GameControllerOpen(i);
 		}
-		if (SDL_IsGameController(i))
+		/*if (SDL_IsGameController(i))
 		{
 			gamepad2[i] = SDL_GameControllerOpen(i);
-		}
+		}*/
 	}
 
 	return ret;
@@ -97,12 +97,20 @@ update_status ModuleInput::PreUpdate()
 	{
 		if (gamepad[i] != nullptr)
 		{
-			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepad[i], SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepad[i], SDL_CONTROLLER_BUTTON_A);
 		}
-		if (gamepad2[i] != nullptr)
+		if (gamepad[i] != nullptr)
 		{
-			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepad2[i], SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+			controller_state[BUTTON_B] = SDL_GameControllerGetButton(gamepad[i], SDL_CONTROLLER_BUTTON_B);
 		}
+		if (gamepad[i] != nullptr)
+		{
+			controller_state[BUTTON_START] = SDL_GameControllerGetButton(gamepad[i], SDL_CONTROLLER_BUTTON_START);
+		}
+		/*if (gamepad2[i] != nullptr)
+		{
+			controller_state[BUTTON_A] = SDL_GameControllerGetButton(gamepad2[i], SDL_CONTROLLER_BUTTON_A);
+		}*/
 	}
 
 	for (int i = 0; i < MAX_BUTTONS; ++i)
@@ -147,11 +155,11 @@ update_status ModuleInput::PreUpdate()
 			GamepadDir[i].X = SDL_GameControllerGetAxis(gamepad[i], SDL_CONTROLLER_AXIS_LEFTX);
 			GamepadDir[i].Y = SDL_GameControllerGetAxis(gamepad[i], SDL_CONTROLLER_AXIS_LEFTY);
 		}
-		if (gamepad2[i] != nullptr)
+		/*if (gamepad2[i] != nullptr)
 		{
 			GamepadDir[i].X = SDL_GameControllerGetAxis(gamepad2[i], SDL_CONTROLLER_AXIS_LEFTX);
 			GamepadDir[i].Y = SDL_GameControllerGetAxis(gamepad2[i], SDL_CONTROLLER_AXIS_LEFTY);
-		}
+		}*/
 	}
 
 
@@ -191,9 +199,9 @@ bool ModuleInput::CleanUp()
 		if (gamepad[i] != nullptr)
 			SDL_GameControllerClose(gamepad[i]);
 		gamepad[i] = nullptr;
-		if (gamepad2[i] != nullptr)
+		/*if (gamepad2[i] != nullptr)
 			SDL_GameControllerClose(gamepad2[i]);
-		gamepad2[i] = nullptr;
+		gamepad2[i] = nullptr;*/
 	}
 	return true;
 }

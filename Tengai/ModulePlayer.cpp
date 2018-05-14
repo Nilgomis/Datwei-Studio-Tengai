@@ -17,27 +17,24 @@
 ModulePlayer::ModulePlayer()
 {
 
-	// idle animation 
-	idle.PushBack({ 7, 2, 43, 40 });
-	idle.PushBack({ 67, 3, 42, 40 });
-	idle.PushBack({ 120, 4, 43, 40 });
+	// idle animation									// JUNIS ANIMATION
+	idle.PushBack({ 4, 0, 28, 26 });
+	idle.PushBack({ 46, 1, 28, 27 });
+	idle.PushBack({ 89, 1, 28, 27 });
 
 	idle.speed = 0.2f;
 
 
-	forward.PushBack({ 7, 2, 43, 40 });
-	forward.PushBack({ 67, 3, 42, 40 });
-	forward.PushBack({ 120, 4, 43, 40 });
-	//forward.loop = false;
+	forward.PushBack({ 4, 0, 28, 26 });
+	forward.PushBack({ 46, 1, 28, 27 });
+	forward.PushBack({ 89, 1, 28, 27 });
+
 	forward.speed = 0.2f;
 
-	backward.PushBack({ 5, 49, 41, 41 });
-	backward.PushBack({ 65, 51, 40, 39 });
-	backward.PushBack({ 124, 51, 38, 38 });
-	backward.PushBack({ 177, 51, 36, 39 });
-	backward.PushBack({ 225, 51, 38, 39 });
-	backward.PushBack({ 275, 51, 36, 39 });
-	//backward.loop = false;
+	backward.PushBack({ 0, 36, 26, 24 });
+	backward.PushBack({ 41, 35, 20, 27 });
+	backward.PushBack({ 79, 33, 17, 29 });
+	backward.loop = false;
 	backward.speed = 0.2f;
 
 }
@@ -53,9 +50,9 @@ bool ModulePlayer::Start()
 	position.y = 50;
 	destroyed = false;
 
-	player = App->textures->Load("Assets/Sprites/Characters/Tengai/Tengai_Spritesheet.png");
+	player = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
 	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
-	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Tengai/basic-attack.wav");
+	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Junis/basic-attack.wav");
 
 	bool shooting = false;
 	return true;
@@ -119,13 +116,13 @@ update_status ModulePlayer::Update()
 	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f) || (App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f))
 	{
 		Mix_PlayChannel(-1, attack, 0);
-		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 
 	// Shooting Gamepad
 	/*if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) && A == false)
 	{
-		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 		A = true;
 	}
 
@@ -146,7 +143,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == col && destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->scene_temple, (Module*)App->intro);
+		App->fade->FadeToBlack((Module*)App->scene_forest, (Module*)App->intro);
 
 		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
 		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);

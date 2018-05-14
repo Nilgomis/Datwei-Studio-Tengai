@@ -22,7 +22,7 @@ ModuleEndScreen::~ModuleEndScreen()
 bool ModuleEndScreen::Start() {
 
 	LOG("Loading End Screen");
-	App->scene_temple->Disable();
+	App->scene_forest->Disable();
 	App->player->Disable();
 	App->player2->Disable();
 	screen_outro = App->textures->Load("assets/sprites/outro.png");

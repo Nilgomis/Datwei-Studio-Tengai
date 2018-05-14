@@ -9,7 +9,9 @@
 #include "ModuleSceneForest.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
-
+#include "SDL_mixer\include\SDL_mixer.h"
+#include "SDL\include\SDL_gamecontroller.h"
+#include "SDL\include\SDL.h"
 
 // Load assets
 ModuleStartScreen::ModuleStartScreen()
@@ -71,7 +73,7 @@ bool ModuleStartScreen::Start()
 	App->render->camera.y = 0;
 	App->player->Disable();
 	App->player2->Disable();
-	App->scene_temple->Disable();//falta afegir un modul per a la pantalla final
+	App->scene_forest->Disable();//falta afegir un modul per a la pantalla final
 	//main sprites
 	graphics = App->textures->Load("Assets/Sprites/UI/StartScreen/button_start.png");
 	graphics2 = App->textures->Load("Assets/Sprites/UI/StartScreen/background.png");
@@ -89,10 +91,14 @@ bool ModuleStartScreen::Start()
 update_status ModuleStartScreen::Update()
 {
 	// Switching between scenes
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
+	{
 		//App->audio->LoadEffect(start, -1);
-		App->fade->FadeToBlack(this, App->scene_temple, 2);
+		App->fade->FadeToBlack(this, App->scene_forest, 2);
 	}
+
+
+
 
 	//Draw Background
 	App->render->Blit(graphics2, 0, 0, &background);
@@ -191,6 +197,7 @@ update_status ModuleStartScreen::Update()
 
 	return update_status::UPDATE_CONTINUE;
 }
+
 
 bool ModuleStartScreen::CleanUp()
 {

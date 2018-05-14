@@ -48,7 +48,7 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if (App->scene_temple->Time() >= queue[i].time && App->scene_temple->Time() < queue[i].time + 1)
+			if (App->scene_forest->Time() >= queue[i].time && App->scene_forest->Time() < queue[i].time + 1)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -79,7 +79,7 @@ update_status ModuleEnemies::PostUpdate()
 		if (enemies[i] != nullptr)
 		{
 			//if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
-			if (App->scene_temple->Time() > enemies[i]->time + DESPAWN_TIME)
+			if (App->scene_forest->Time() > enemies[i]->time + DESPAWN_TIME)
 			{
 				delete enemies[i];
 				enemies[i] = nullptr;

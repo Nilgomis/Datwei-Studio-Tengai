@@ -24,7 +24,7 @@ Application::Application()
 	modules[i++] = textures			= new ModuleTextures();
 	modules[i++] = audio			= new ModuleAudio();
 	modules[i++] = intro			= new ModuleStartScreen();
-	modules[i++] = scene_temple		= new ModuleSceneForest();
+	modules[i++] = scene_forest		= new ModuleSceneForest();
 	modules[i++] = enemies			= new ModuleEnemies();
 	modules[i++] = player			= new ModulePlayer();
 	modules[i++] = player2			= new ModulePlayer2();
@@ -46,7 +46,7 @@ bool Application::Init()
 	bool ret = true;
 
 	// disables stopped modules
-	scene_temple->Disable();
+	scene_forest->Disable();
 	player->Disable();
 	player2->Disable();
 	collision->Disable();

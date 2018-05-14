@@ -31,7 +31,8 @@ enum KEY_STATE
 
 enum BUTTONS {
 	BUTTON_A,
-	BUTTON_B
+	BUTTON_B,
+	BUTTON_START,
 };
 
 class ModuleInput : public Module
@@ -53,7 +54,7 @@ public:
 	SDL_Event event;
 	bool controller_state[MAX_BUTTONS];
 	SDL_GameController* gamepad [MAX_GAMEPADS] = { nullptr };
-	SDL_GameController* gamepad2 [MAX_GAMEPADS] = { nullptr };
+	//SDL_GameController* gamepad2 [MAX_GAMEPADS] = { nullptr };
 
 	struct ControlDir
 	{
