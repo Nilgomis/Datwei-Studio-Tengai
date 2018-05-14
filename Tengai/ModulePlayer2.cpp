@@ -135,14 +135,14 @@ update_status ModulePlayer2::Update()
 		//}
 	}
 	// Shooting
-	if (App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
+	if ((App->input->keyboard[SDL_SCANCODE_KP_0] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f) || (App->input->controller2[BUTTON_A] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f))
 	{
 		Mix_PlayChannel(-1, attack, 0);
 		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 	col->SetPos(position.x, position.y);
 
-	// SHooting gamepad
+	/*// SHooting gamepad
 	if (SDL_GameControllerGetButton(App->input->gamepad2, SDL_CONTROLLER_BUTTON_A) && A2 == false)
 	{
 		App->particles->AddParticle(App->particles->junishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
@@ -152,7 +152,7 @@ update_status ModulePlayer2::Update()
 	if (SDL_GameControllerGetButton(App->input->gamepad2, SDL_CONTROLLER_BUTTON_A) == false)
 	{
 		A2 = false;
-	}
+	}*/
 
 	// Draw everything
 

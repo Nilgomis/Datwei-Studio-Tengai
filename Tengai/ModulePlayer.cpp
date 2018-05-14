@@ -116,14 +116,14 @@ update_status ModulePlayer::Update()
 
 	// Shooting
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f)
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f) || (App->input->controller[BUTTON_A] == KEY_STATE::KEY_DOWN && cooldown <= 0.0f))
 	{
 		Mix_PlayChannel(-1, attack, 0);
 		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 	}
 
 	// Shooting Gamepad
-	if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) && A == false)
+	/*if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) && A == false)
 	{
 		App->particles->AddParticle(App->particles->tengaishot, position.x + 20, position.y + 10, COLLIDER_PLAYER_SHOT);
 		A = true;
@@ -132,7 +132,7 @@ update_status ModulePlayer::Update()
 	if (SDL_GameControllerGetButton(App->input->gamepad, SDL_CONTROLLER_BUTTON_A) == false)
 	{
 		A = false;
-	}
+	}*/
 
 	// Draw everything
 
