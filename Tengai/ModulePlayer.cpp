@@ -81,7 +81,7 @@ update_status ModulePlayer::Update()
 	float speed = 2.5f;
 	cooldown -= 0.04f;
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || App->input->gamepad, SDL_CONTROLLER_AXIS_LEFTX > CONTROLLER_DEAD_ZONE)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &forward;
 			position.x += speed;

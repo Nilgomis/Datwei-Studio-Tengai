@@ -109,9 +109,15 @@ update_status ModulePlayer2::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &backward;
+		current_animation = &forward;
 		//if (position.y > 20) {
 			position.y -= speed;
+		//}
+	}
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &backward;
+		//if (position.y > 20) {
 		//}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
@@ -119,6 +125,13 @@ update_status ModulePlayer2::Update()
 		current_animation = &forward;
 		//if (position.y < 192) {
 			position.y += speed;
+		//}
+	}
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &backward;
+		//if (position.y < 192) {
+	
 		//}
 	}
 	// Shooting
