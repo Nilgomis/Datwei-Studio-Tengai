@@ -26,7 +26,7 @@ QA:	Jan Adell
 Click [HERE](https://github.com/Nilgomis/Datwei-Studio-Tengai/wiki/Tengai-by-Datwei-Studio) to go to our wiki.
 
 # Controls
-
+## Keyboard
 PLAYER 1
 W: Move Up.
 S: Move Down.
@@ -42,3 +42,13 @@ Left arrow key: Move Left.
 Right arrow key: Move Right.
 NUMPAD 0: Shoot.
 //NUMPAD 0: Special.
+
+## Controller
+Left Stick up: Move up.
+Left Stick down: Move down.
+Left Stick left: Move left.
+Left Stick right: Move right.
+A: Shoot.
+B: Special.
+Start: Start.
+Back: Quit.
