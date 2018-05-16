@@ -69,7 +69,7 @@ bool ModulePlayer2::Start()
 	bool ret = true;
 	destroyed = false;
 	player2 = App->textures->Load("Assets/Sprites/Characters/Tengai/Tengai_Spritesheet.png");
-	col = App->collision->AddCollider({ position.x,position.y,30,28 }, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
 	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Tengai/basic-attack.wav");
 	
 	bool shooting = false;

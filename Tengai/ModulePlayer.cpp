@@ -51,7 +51,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 
 	player = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
-	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({ position.x,position.y,30,28 }, COLLIDER_PLAYER, this);
 	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Junis/basic-attack.wav");
 
 	bool shooting = false;
