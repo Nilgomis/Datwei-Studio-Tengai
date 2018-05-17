@@ -9,6 +9,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleSceneForest.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
+#include "SDL_mixer\include\SDL_mixer.h"
 //#include "ModuleBackground.h"
 
 #include "SDL\include\SDL_render.h"
@@ -175,12 +177,18 @@ bool ModuleSceneForest::Start()
 	bg.w = 256;
 	bg.h = 224;*/
 
+	
+
 	//App->background->Enable();
 	App->player->Enable();
 	App->player2->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
+
+	// music
+	music = App->audio->LoadMusic("Assets/Audio/WAV/Music/08_Tall_cedar.wav");
+	Mix_PlayMusic(music, -1);
 
 	// Colliders ---
 	topCollider = App->collision->AddCollider({ 0, 0, 99000, 20 }, COLLIDER_WALL);
@@ -252,6 +260,9 @@ bool ModuleSceneForest::CleanUp()
 	App->enemies->Disable();
 	//App->background->Disable();
 
+	//Unloading Audio
+	App->audio->UnloadMusic(music);
+	music = nullptr;
 	return true;
 }
 

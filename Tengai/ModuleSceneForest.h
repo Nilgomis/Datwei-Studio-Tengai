@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "SDL_mixer/include/SDL_mixer.h"
+#include "ModuleAudio.h"
 
 struct SDL_Texture;
 
@@ -59,6 +60,8 @@ public:
 	float bgXpos3 = 512;*/
 	float frameTime = 0;
 	float t2;
+
+	_Mix_Music* music = nullptr;
 };
 
 #endif // __MODULESceneForest_H__

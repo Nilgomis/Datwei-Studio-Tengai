@@ -90,10 +90,11 @@ bool ModuleStartScreen::Start()
 
 update_status ModuleStartScreen::Update()
 {
+	start= App->audio->LoadEffect("Assets/Audio/WAV/Effects/StartScreen/StartEffect.wav");
 	// Switching between scenes
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{
-		//App->audio->LoadEffect(start, -1);
+		Mix_PlayChannel(-1, start, 0);
 		App->fade->FadeToBlack(this, App->scene_forest, 2);
 	}
 

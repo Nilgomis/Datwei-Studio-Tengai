@@ -37,8 +37,7 @@ public:
 	float cooldown = 0.1f;
 	Mix_Chunk* attack = nullptr;
 
-	/*bool A = false;
-	bool B = false;*/
+	
 
 };
 

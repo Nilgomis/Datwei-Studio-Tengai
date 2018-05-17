@@ -20,7 +20,7 @@ red ship					0.7 README  ROADMAP zip
 ninja
 big pagoda
 audio level
-collider screen border
+camera limits
 
 
 0.8

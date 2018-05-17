@@ -22,7 +22,7 @@ private:
 
 public:
 	EnemyNinja(int x, int y);
-	void Move();
+	//void Move();
 
 };
 
