@@ -2,52 +2,52 @@ tengai forest level
 
 0.6  
 junis
-	animacions
+	animations
 	colliders
 	audio
 tengai 
-	animacions
-	colliders 				0.6 README I ROADMAP
+	animations
+	colliders 				0.6 README  ROADMAP
 	audio
-scroll fondo
-audio a la pantalla d'inici
+scroll background
+audio startscreen
 
 
 
 0.7
 green ship
-red ship					0.7 README I ROADMAP zip
+red ship					0.7 README  ROADMAP zip
 ninja
 big pagoda
-audio nivell
-colliders extrems de la pantalla
+audio level
+collider screen border
 
 
 0.8
 boss queen bee
-	animacions				0.8 README I ROADMAP zip
-	projectils
+	animations				0.8 README  ROADMAP zip
+	projectiles
 	colliders
 	audio
-power ups, coins i bombes amb colliders i audio
+power ups, coins, bombs - colliders, audio
 
 0.9
 earth-worm tank
-	animacions
-	projectils				0.9 README I ROADMAP zip
+	animations
+	projectiles				0.9 README  ROADMAP zip
 	colliders
 	audio
 Mid-Boss: Dagger Sharpener
-	animacions
-	projectils
+	animations
+	projectiles
 	colliders
 	audio
 
 1.0
 UI
-escollir player 1
-spawnejar player 2 al conectar mando		1.0 README I ROADMAP zip
-insertar monedes
+chose player 1
+spawn player 2 when controller is connected	1.0 README  ROADMAP zip
+insert coin
 
 
 
