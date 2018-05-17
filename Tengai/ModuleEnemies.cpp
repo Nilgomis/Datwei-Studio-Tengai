@@ -121,7 +121,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, float time)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
-			queue[i].time = time;
+			//queue[i].time = time;
 			ret = true;
 			break;
 		}

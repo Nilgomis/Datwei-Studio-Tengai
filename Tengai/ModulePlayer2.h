@@ -34,6 +34,8 @@ public:
 	bool shooting;
 	bool destroyed = false;
 	float cooldown = 0.1f;
+	int startx = 305;
+	int starty = 126;
 	Mix_Chunk* attack = nullptr;
 
 	/*bool A2 = false;

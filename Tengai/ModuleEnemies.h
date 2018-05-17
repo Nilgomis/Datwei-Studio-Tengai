@@ -12,6 +12,11 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	REDSHIP,
 	GREENSHIP,
+	NINJA,
+	PAGODA,
+	SHARPENER,
+	WORM,
+	BEE
 };
 
 class Enemy;

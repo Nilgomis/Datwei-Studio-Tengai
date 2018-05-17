@@ -187,10 +187,10 @@ bool ModuleSceneForest::Start()
 	App->enemies->Enable();
 
 	// music
-	music = App->audio->LoadMusic("Assets/Audio/WAV/Music/08_Tall_cedar.wav");
+	music = App->audio->LoadMusic("Assets/Audio/OGG/Music/08_Tall_cedar.ogg");
 	Mix_PlayMusic(music, -1);
 
-	// Colliders ---
+	// Camera limits ---
 	topCollider = App->collision->AddCollider({ 0, 0, 99000, 20 }, COLLIDER_WALL);
 	botCollider = App->collision->AddCollider({ 0, SCREEN_HEIGHT - 4, 990000, 16 }, COLLIDER_WALL);
 	leftCollider = App->collision->AddCollider({ 0,0,0,SCREEN_HEIGHT }, COLLIDER_WALL);
@@ -239,6 +239,7 @@ bool ModuleSceneForest::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 100, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 120, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENSHIP, 320, 140, 0);*/
+
 
 	frameTime = 0;
 	t2 = 0;

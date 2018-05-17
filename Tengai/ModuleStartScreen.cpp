@@ -90,7 +90,7 @@ bool ModuleStartScreen::Start()
 
 update_status ModuleStartScreen::Update()
 {
-	start= App->audio->LoadEffect("Assets/Audio/WAV/Effects/StartScreen/StartEffect.wav");
+	start= App->audio->LoadEffect("Assets/Audio/OGG/Effects/StartScreen/StartEffect.ogg");
 	// Switching between scenes
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 || App->input->controller[BUTTON_START] == KEY_STATE::KEY_DOWN)
 	{

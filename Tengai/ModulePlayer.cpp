@@ -46,13 +46,13 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
-	position.x = 15;
-	position.y = 50;
+	position.x = SCREEN_WIDTH-startx;
+	position.y = SCREEN_HEIGHT-starty;
 	destroyed = false;
 
 	player = App->textures->Load("Assets/Sprites/Characters/Junis/Junis_Spritesheet.png");
 	col = App->collision->AddCollider({ position.x,position.y,30,28 }, COLLIDER_PLAYER, this);
-	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Junis/basic-attack.wav");
+	attack = App->audio->LoadEffect("Assets/Audio/OGG/Effects/Junis/basic-attack.ogg");
 
 	bool shooting = false;
 	return true;
@@ -99,12 +99,12 @@ update_status ModulePlayer::Update()
 			position.y += speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &backward;
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &backward;
 

@@ -64,13 +64,13 @@ ModulePlayer2::~ModulePlayer2()
 bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
-	position.x = 25;
-	position.y = 95;
+	position.x = SCREEN_WIDTH-startx;
+	position.y = SCREEN_HEIGHT-starty;
 	bool ret = true;
 	destroyed = false;
 	player2 = App->textures->Load("Assets/Sprites/Characters/Tengai/Tengai_Spritesheet.png");
 	col = App->collision->AddCollider({ position.x,position.y,43,40 }, COLLIDER_PLAYER, this);
-	attack = App->audio->LoadEffect("Assets/Audio/WAV/Effects/Tengai/basic-attack.wav");
+	attack = App->audio->LoadEffect("Assets/Audio/OGG/Effects/Tengai/basic-attack.ogg");
 	
 	bool shooting = false;
 	return ret;

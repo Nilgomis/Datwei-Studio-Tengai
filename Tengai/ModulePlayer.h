@@ -35,6 +35,8 @@ public:
 	bool death = false;
 	bool spawn = true;
 	float cooldown = 0.1f;
+	int startx = 305;
+	int starty = 174;
 	Mix_Chunk* attack = nullptr;
 
 	
